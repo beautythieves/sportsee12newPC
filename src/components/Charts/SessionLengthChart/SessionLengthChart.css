@@ -1,0 +1,27 @@
+
+
+.Session {
+  background-color: red;
+  width:268px;
+  height: 268px;
+}
+/* 
+.SessionLengthChart line,
+.SessionLengthChart path {
+  stroke: white;
+} */
+h3{
+  color: black;
+  font-size: 15px;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  text-align: start;
+}
+.SessionLengthChart .recharts-cartesian-grid-horizontal line {
+  stroke: rgba(255, 255, 255, 0.3);
+}
+
+.SessionLengthChart .recharts-cartesian-grid-vertical line {
+  display: none;
+}

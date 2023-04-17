@@ -1,0 +1,29 @@
+.UserContainer {
+  display: grid;
+  grid-template-columns: 835px auto;
+  margin-left: 200px;
+}
+
+.Charts {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.ChartsInRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.Energy {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 150px;
+  margin-left: 30px;
+  gap: 30px;
+}

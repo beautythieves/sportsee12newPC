@@ -1,0 +1,48 @@
+.header-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-column-gap: 10px;
+  background-color: black;
+  align-items: center;
+  z-index:2;
+  position: relative;
+height:91px;
+width:1440px;
+}
+
+.header-logo {
+  grid-column: 1;
+  width: 178px;
+  justify-self: left;
+}
+
+.header-accueil,
+.header-about,
+.header-services,
+.header-contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-accueil {
+  grid-column: 2;
+}
+
+.header-about {
+  grid-column: 3;
+}
+
+.header-services {
+  grid-column: 4;
+}
+
+.header-contact {
+  grid-column: 5;
+}
+
+h1 > a {
+  color: white;
+  text-decoration: none;
+  font-size: 24px;
+}
