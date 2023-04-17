@@ -53,7 +53,7 @@ function DailyActivityChart() {
 
   // Format the label for X axis of the chart
   const formatLabel = (value, index) => {
-    return index + 1;
+    return index + 1; //blabla
   };
 
   // Render the user's activity chart
