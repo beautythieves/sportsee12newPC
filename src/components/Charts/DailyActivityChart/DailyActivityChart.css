@@ -1,0 +1,18 @@
+.DailyTitle {
+    font-size: 150px;
+    line-height: 24px;
+    font-weight: 500;
+  }
+  .titleChart {
+    font-size: 15px;
+    line-height: 24px;
+    font-weight: 500;
+  }
+  .recharts-legend-item-text {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .Daily{
+    margin-top: 100px;
+  }
