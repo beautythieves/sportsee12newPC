@@ -59,7 +59,7 @@ function DailyActivityChart() {
   // Render the user's activity chart
   return (
     <div className="Daily">
-      <h3 className = "DailyTitle">Activité quotidienne</h3>
+      <h3 className = "DailyTitle">Activités de quotidienne</h3>
       <BarChart width={835} height={320} data={userActivity}>
         <XAxis dataKey="day" tickCount={10} tickFormatter={formatLabel} />
         <YAxis orientation="right" />
@@ -89,7 +89,7 @@ function DailyActivityChart() {
                 <Tooltip />
 
         
-      </BarChart>cd Fron
+      </BarChart>
     </div>
   );
 }
