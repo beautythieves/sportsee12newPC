@@ -10,18 +10,29 @@
 .SessionLengthChart path {
   stroke: white;
 } */
-h3{
-  color: black;
+.sessionTitle{
+  color: white;
   font-size: 15px;
-  font-weight: 400;
+  font-weight: 500;
   margin: 0;
   padding: 0;
   text-align: start;
+  opacity: 0.5;
+  position: relative;
+  top:20px;
+  left: 15px;
+
 }
-.SessionLengthChart .recharts-cartesian-grid-horizontal line {
-  stroke: rgba(255, 255, 255, 0.3);
+.recharts-cartesian-grid-horizontal line {
+  stroke: none;
 }
 
 .SessionLengthChart .recharts-cartesian-grid-vertical line {
+  display: none;
+}
+.CartesianGrid-horizontal line {
+  stroke: red;
+}
+.recharts-tooltip-cursor {
   display: none;
 }

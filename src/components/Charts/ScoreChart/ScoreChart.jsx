@@ -61,41 +61,46 @@ function UserPieChart() {
   // Render the pie chart with the user score data
   return (
     <div className="Pie" style={{ width: "100%", height: 300, background: "#FBFBFB" }}>      <PieChart width={300} height={300}>
+      {/* Add a label for the chart */}
+      <text
+        x={80}
+        y={78}
+        fill="#20253A"
+        style={{ fontSize: 15, fontWeight: "bold" }}
+      >
+        Score
+      </text>
+      <Pie
+        data={data}
+        cx="50%"
+        cy="50%"
+        innerRadius={60}
+        outerRadius={80}
+        fill="#8884d8"
+        paddingAngle={5}
+        dataKey="value"
+      >
+        {/* Add slices for the chart */}
+        {data.map((entry, index) => (
+          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+        ))}
         {/* Add a label for the chart */}
-        <text
-          x={50}
-          y={50}
-          fill="#8884d8"
-          style={{ fontSize: 15, fontWeight: "bold" }}
-        >
-          Score
-        </text>
-        <Pie
-          data={data}
-          cx="50%"
-          cy="50%"
-          innerRadius={60}
-          outerRadius={80}
-          fill="#8884d8"
-          paddingAngle={5}
-          dataKey="value"
-        >
-          {/* Add slices for the chart */}
-          {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-          ))}
-          {/* Add a label for the chart */}
-          <Label
-            value={`${Math.round(todayScore * 100)}%\n de votre\n objectif`}
-            position="center"
-            fill="#282D30"
-            fontSize={20}
-            fontWeight="bold"
-            lineHeight={1.2}
-            textAnchor="middle"
-          />
-        </Pie>
-      </PieChart>
+        <Label
+          content={({ viewBox }) => {
+            const { cx, cy } = viewBox;
+            const percentage = `${Math.round(todayScore * 100)}%`;
+            return (
+              <g>
+                <text x={cx} y={cy - 10} textAnchor="middle" fontSize={20} fontWeight="700" fill="#282D30">{percentage}</text>
+                <text x={cx} y={cy + 10} textAnchor="middle" fontSize={20} fill="#282D30">de votre</text>
+                <text x={cx} y={cy + 30} textAnchor="middle" fontSize={20} fill="#282D30">objectif</text>
+              </g>
+            );
+          }}
+        />
+
+      </Pie>
+    </PieChart>
     </div>
   );
 }

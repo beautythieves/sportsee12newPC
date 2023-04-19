@@ -33,13 +33,19 @@ function SessionLengthChart() {
       try {
         // Get user average session data from the data manager
         const userData = await getUserAverageSessions(userId);
-
+console.log ("userData:", userData)
         // Update the userSessions state with the fetched data
         const updatedData = userData[1].map((dayData) => {
           const sessionLengthStr = dayData.sessionLength.toString();
           const sessionLengthNum = Number(sessionLengthStr.match(/\d+/)[0]);
+          const daysOfWeek = ["", "L", "M", "M", "J", "V", "S", "D"];
+          const day = daysOfWeek[dayData.day];
+          console.log("dayData:", dayData)
+          console.log("day:", day)
+          console.log("sessionLengthNum:", sessionLengthNum)
           return {
             ...dayData,
+            day: day,
             sessionLength: sessionLengthNum,
           };
         });
@@ -51,6 +57,9 @@ function SessionLengthChart() {
     }
     fetchData();
   }, [userId]);
+
+
+
 
   // Display an error message if the data failed to load
   if (error) {
@@ -80,27 +89,31 @@ function SessionLengthChart() {
     const minutes = value % 60;
     return `${hours > 0 ? `${hours}h ` : ""}${minutes}min`;
   };
-
   // Render the line chart with the user session data
   return (
     <div className="Session">
-      <h3>Durée moyenne des sessions</h3>
-      <LineChart width={268} height={263} data={userSessions}>
+      <h3 className ="sessionTitle">Durée moyenne des <br></br>sessions</h3>
+      <LineChart width={268} height={263} data={userSessions} cursor="default">
         <XAxis
           dataKey="day"
-          label={{ value: "Jour", position: "insideBottom" }}
-          tickFormatter={formatLabel}
+          tick={{stroke: "white", strokeWidth:0.4}}
+          style={{textAnchor: "middle", transform: "translateY(-20px)"}}
         />
         <YAxis
           type="number"
           domain={[0, "dataMax"]}
           tickCount={5}
-          tickFormatter={formatLabel}
+          width={0}
+          
         />
         <Tooltip
-          formatter={formatTooltip}
+          formatter={(value) => `${value} min`}
           contentStyle={{ width: 39, height: 25 }}
+          labelFormatter={(label) => `Jour: ${label}`}
+          label= {null}
+          isAnimationActive={false}
         />
+
         <CartesianGrid stroke="#f5f5f5" vertical={false} />
         <CartesianGrid stroke="#f5f5f5" vertical={false} />
         <Line type="monotone" dataKey="sessionLength" stroke="#fff" />

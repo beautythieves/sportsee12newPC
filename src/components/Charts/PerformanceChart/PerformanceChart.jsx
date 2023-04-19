@@ -55,11 +55,11 @@ function PerformanceChart() {
   }, [userId]);
 
   return (
-    <div className="Perf">
+    <div className="Perf" style={{ background: "#000000" }}>
     {/* <ResponsiveContainer width="100%" height="100%"><ResponsiveContainer width="100%" height="100%"> */}
 <RadarChart cx={129} cy={131.5} outerRadius={80} width={258} height={263} data={data} legend={{ fontSize: 12, fontWeight: 'bold' }}>
 <PolarGrid className="polar-grid" />
-        <PolarAngleAxis dataKey="name" />
+<PolarAngleAxis dataKey="name" tick={{ stroke: "#FFFFFF", strokeWidth: 0.4 }} style={{ fontSize: 12, fontWeight: "normal" }} />
         <Radar
   name="Performance"
   dataKey="value"

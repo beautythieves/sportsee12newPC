@@ -16,3 +16,9 @@
   .Daily{
     margin-top: 100px;
   }
+  /* target the label */
+  tspan:first-of-type {
+    color: red;
+  }
+  
+  
