@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { getUserAverageSessions } from "../../../dataManager/dataManager";
 import { useParams } from "react-router-dom";
 import {
@@ -16,6 +17,11 @@ import "./SessionLengthChart.css";
  * @returns {JSX.Element}
  */
 function SessionLengthChart() {
+  // Define PropTypes for the component
+  SessionLengthChart.propTypes = {
+    userId: PropTypes.string.isRequired,
+  };
+
   // Extract userId from the URL using useParams
   const { userId } = useParams();
 
@@ -33,16 +39,13 @@ function SessionLengthChart() {
       try {
         // Get user average session data from the data manager
         const userData = await getUserAverageSessions(userId);
-console.log ("userData:", userData)
+
         // Update the userSessions state with the fetched data
         const updatedData = userData[1].map((dayData) => {
           const sessionLengthStr = dayData.sessionLength.toString();
           const sessionLengthNum = Number(sessionLengthStr.match(/\d+/)[0]);
           const daysOfWeek = ["", "L", "M", "M", "J", "V", "S", "D"];
           const day = daysOfWeek[dayData.day];
-          console.log("dayData:", dayData)
-          console.log("day:", day)
-          console.log("sessionLengthNum:", sessionLengthNum)
           return {
             ...dayData,
             day: day,
@@ -57,9 +60,6 @@ console.log ("userData:", userData)
     }
     fetchData();
   }, [userId]);
-
-
-
 
   // Display an error message if the data failed to load
   if (error) {
@@ -89,38 +89,44 @@ console.log ("userData:", userData)
     const minutes = value % 60;
     return `${hours > 0 ? `${hours}h ` : ""}${minutes}min`;
   };
+
   // Render the line chart with the user session data
   return (
     <div className="Session">
-      <h3 className ="sessionTitle">Durée moyenne des <br></br>sessions</h3>
-      <LineChart width={268} height={263} data={userSessions} cursor="default">
+      <h3 className="sessionTitle">Durée moyenne des <br></br>sessions</h3>
+      <LineChart 
+      width={268} 
+      height={263} 
+      data={userSessions} 
+      cursor="default"
+      margin={{ top:20, right:10, left:10, bottom: 30}}
+      >
         <XAxis
           dataKey="day"
-          tick={{stroke: "white", strokeWidth:0.4}}
-          style={{textAnchor: "middle", transform: "translateY(-20px)"}}
+          tick={{ stroke: "white", strokeWidth: 0.4, fontSize:12 }}
+          style={{ textAnchor: "middle", transform: "translateY(-0px) " }}
         />
         <YAxis
           type="number"
           domain={[0, "dataMax"]}
           tickCount={5}
           width={0}
-          
+          stroke= "transparent"
+          axisline= {false}
         />
         <Tooltip
           formatter={(value) => `${value} min`}
           contentStyle={{ width: 39, height: 25 }}
           labelFormatter={(label) => `Jour: ${label}`}
-          label= {null}
+          label={null}
           isAnimationActive={false}
         />
-
         <CartesianGrid stroke="#f5f5f5" vertical={false} />
-        <CartesianGrid stroke="#f5f5f5" vertical={false} />
-        <Line type="monotone" dataKey="sessionLength" stroke="#fff" />
+        <CartesianGrid stroke="#f5f5f5" horizontal={false} />
+        <Line type="monotone" dataKey="sessionLength" stroke="#fff" YAxis={null}/>
       </LineChart>
     </div>
   );
 }
-
 
 export default SessionLengthChart;

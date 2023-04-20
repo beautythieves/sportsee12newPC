@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
 import { getUserMainData } from "../../dataManager/dataManager";
 import "./UserGreeting.css";
@@ -7,10 +8,7 @@ import "./UserGreeting.css";
  * UserGreeting component displays a greeting message for the user.
  * @returns {JSX.Element}
  */
-function UserGreeting() {
-  // Extract userId from the URL using useParams
-  const { userId } = useParams();
-  
+function UserGreeting({ userId }) {
   // Initialize state variables for user data and error status
   const [user, setUser] = useState(null);
   const [error, setError] = useState(false);
@@ -25,10 +23,10 @@ function UserGreeting() {
       try {
         // Get user main data from the data manager
         const userData = await getUserMainData(userId);
-        
+
         // Find the user with the matching userId
         // const userData = data.find((u) => u.id === parseInt(userId, 10));
-        
+
         // Update the user state with the found user data
         setUser(userData);
       } catch (err) {
@@ -37,7 +35,7 @@ function UserGreeting() {
         setError(true);
       }
     }
-    
+
     // Call fetchData to fetch user data
     fetchData();
   }, [userId]);
@@ -62,5 +60,10 @@ function UserGreeting() {
     </div>
   );
 }
+
+// Define PropTypes for the component
+UserGreeting.propTypes = {
+  userId: PropTypes.string.isRequired,
+};
 
 export default UserGreeting;

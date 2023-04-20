@@ -2,6 +2,7 @@
     font-size: 15px;
     line-height: 24px;
     font-weight: 500;
+    margin-top: 50px;
   }
   .titleChart {
     font-size: 15px;
@@ -20,5 +21,11 @@
   tspan:first-of-type {
     color: red;
   }
-  
+  .recharts-legend-item {
+    fill: black !important;
+    color:black;
+  }
+  .recharts-legend-item-text[name="Calories brûlées (kcal)"] {
+    color: black;
+  }
   

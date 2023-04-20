@@ -51,7 +51,7 @@ function UserPage() {
     <div className="UserContainer">
       <div className="Charts">
         <UserGreeting userId={userId} />
-        <DailyActivityChart />
+        <DailyActivityChart userId ={userId} />
         <div className="ChartsInRow">
           <SessionLengthChart />
           <PerformanceChart />
