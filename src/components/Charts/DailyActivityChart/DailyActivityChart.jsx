@@ -5,6 +5,24 @@ import { useParams } from "react-router-dom";
 import { BarChart, XAxis, YAxis, Tooltip, Bar, Legend } from "recharts";
 import "./DailyActivityChart.css";
 
+const CustomTooltip = ({ active, payload }) => {
+  if (active && payload && payload.length) {
+    const weight = `${payload[0].payload.kilograms} kg`;
+    const calories = `${payload[1].payload.calories} kcal`;
+
+    return (
+      <div className="custom-tooltip">
+        <p className="label">
+          Poids: <span className="tooltip-value">{weight}</span>
+          <br />
+          Calories brûlées: <span className="tooltip-value">{calories}</span>
+        </p>
+      </div>
+    );
+  }
+  return null;
+};
+
 /**
  * DailyActivityChart component displays a bar chart showing daily activity for a user.
  * @returns {JSX.Element}
@@ -27,7 +45,6 @@ function DailyActivityChart() {
       try {
         // Get user activity data from the data manager
         const chartData = await getUserActivity(userId);
-        console.log(chartData);
         // Update the userActivity state with the fetched data
         setUserActivity(chartData);
       } catch (err) {
@@ -49,11 +66,31 @@ function DailyActivityChart() {
   if (!userActivity) {
     return <div>Loading...</div>;
   }
+  // Calculate the maximum weight and kcal in the data
+  const maxWeight = Math.max(...userActivity.map((data) => data.kilograms));
+  const maxKcal = Math.max(...userActivity.map((data) => data.calories));
 
+  // Calculate the ratio between the maximum weight and kcal
+  const ratio = maxKcal / maxWeight;
+
+  // Function to calculate the height of the kcal bar
+const getKcalBarHeight = (data) => {
+  const weight = data.kilograms;
+  const kcal = data.calories;
+  const height = weight * ratio;
+  return height < 1 ? 1 : height * kcal / weight;
+};
   // Format the label for X axis of the chart
   const formatLabel = (value, index) => {
+    if (!userActivity || userActivity.length === 0) {
+      return "";
+    }
+    const day = userActivity[index].day;
+    console.log(`formatLabel(${value}, ${index}) => ${day}`);
     return index + 1;
   };
+
+
 
   // Render the user's activity chart
   return (
@@ -63,19 +100,30 @@ function DailyActivityChart() {
           Activité quotidienne
         </text>
         <XAxis dataKey="day" tickCount={10} tickFormatter={formatLabel} />
-        <YAxis orientation="right" />
+        <YAxis
+          orientation="right"
+          domain={[50, 100]}
+          ticks={[50, 60, 70, 80, 90, 100]}
+          tickFormatter={(value) => `${value} `}
+        />
 
+        <Tooltip
+          content={<CustomTooltip />}
+          style={{ fontSize: "16px" }}
+          wrapperStyle={{ width: "120px", height: "60px" }}
+
+        />
         <Bar
           dataKey="kilograms"
           fill="#E6000"
           barSize={7}
           name="Poids (Kg)"
           radius={[3, 3, 0, 0]}
+
         />
         <Bar
           dataKey="calories"
-          fill="red"
-          barSize={7}
+          barSize={7 * ratio}
           name="Calories brûlées (kcal)"
           radius={[3, 3, 0, 0]}
         />
@@ -87,11 +135,8 @@ function DailyActivityChart() {
           wrapperStyle={{ color: "black" }}
         />
 
-        <Tooltip
-          formatter={(value, name, props) =>
-            name === "Poids (Kg)" ? `${value} Kg` : `${value} Kcal`
-          }
-        />
+
+
       </BarChart>
     </div>
   );

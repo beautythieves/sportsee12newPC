@@ -53,7 +53,7 @@ function UserPage() {
         <UserGreeting userId={userId} />
         <DailyActivityChart userId ={userId} />
         <div className="ChartsInRow">
-          <SessionLengthChart />
+          <SessionLengthChart userId= {userId} />
           <PerformanceChart />
           <UserPieChart />
         </div>

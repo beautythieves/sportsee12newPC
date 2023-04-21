@@ -3,11 +3,12 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Header from './components/Header/Header';
 import AsideNav from './components/AsideNav/AsideNav';
 import UserPage from './components/UserPage/UserPage';
+import "./App.css" 
 /* import styles.css*/
 import "./styles/styles.css"
 function App() {
   return (
-    <div>
+    <div className='app-container'>
       <Header />
       <AsideNav />
       <Router>

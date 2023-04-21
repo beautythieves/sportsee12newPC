@@ -17,10 +17,7 @@
   .Daily{
     margin-top: 100px;
   }
-  /* target the label */
-  tspan:first-of-type {
-    color: red;
-  }
+  
   .recharts-legend-item {
     fill: black !important;
     color:black;
@@ -28,4 +25,34 @@
   .recharts-legend-item-text[name="Calories brûlées (kcal)"] {
     color: black;
   }
-  
+
+  path[name="Calories brûlées (kcal)"] {
+    fill: red;
+}
+.recharts-legend-item.legend-item-1 path{
+  fill:red;
+}
+
+
+.recharts-tooltip-wrapper {
+  pointer-events: none;
+  visibility: visible !important;
+}
+
+.custom-tooltip {
+  background-color: #18ab58;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: blue;
+  transform: translateY(-10px);
+  width:200px;
+
+}
+.label .tooltip-value {
+  margin-top: 10px;
+  writing-mode: horizontal-tb;
+  transform: rotate(180deg) translateX(-50%);
+  background-color: red;
+}

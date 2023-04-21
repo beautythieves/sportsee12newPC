@@ -94,16 +94,16 @@ function SessionLengthChart() {
   return (
     <div className="Session">
       <h3 className="sessionTitle">Durée moyenne des <br></br>sessions</h3>
-      <LineChart 
-      width={268} 
-      height={263} 
-      data={userSessions} 
-      cursor="default"
-      margin={{ top:20, right:10, left:10, bottom: 30}}
+      <LineChart
+        width={268}
+        height={263}
+        data={userSessions}
+        cursor="default"
+        margin={{ top: 20, right: 10, left: 10, bottom: 30 }}
       >
         <XAxis
           dataKey="day"
-          tick={{ stroke: "white", strokeWidth: 0.4, fontSize:12 }}
+          tick={{ stroke: "white", strokeWidth: 0.4, fontSize: 12 }}
           style={{ textAnchor: "middle", transform: "translateY(-0px) " }}
         />
         <YAxis
@@ -111,22 +111,30 @@ function SessionLengthChart() {
           domain={[0, "dataMax"]}
           tickCount={5}
           width={0}
-          stroke= "transparent"
-          axisline= {false}
+          stroke="transparent"
+          axisline={false}
         />
-        <Tooltip
-          formatter={(value) => `${value} min`}
-          contentStyle={{ width: 39, height: 25 }}
-          labelFormatter={(label) => `Jour: ${label}`}
-          label={null}
-          isAnimationActive={false}
-        />
+  <Tooltip
+  formatter={(value) => {
+    console.log(value);
+    const sessionLength = value && value.payload ? value.payload.sessionLength : 0;
+    return `${sessionLength} min`;
+  }}
+  contentStyle={{ width: 50, height: 30 }}
+  label={null}
+  isAnimationActive={false}
+/>
         <CartesianGrid stroke="#f5f5f5" vertical={false} />
         <CartesianGrid stroke="#f5f5f5" horizontal={false} />
-        <Line type="monotone" dataKey="sessionLength" stroke="#fff" YAxis={null}/>
+        <Line type="monotone" data={userSessions} stroke="#fff" yAxis={null} dot={false} strokeWidth={2}  dataKey="sessionLength" />
+        {console.log(userSessions, "achemene")}
+
+
       </LineChart>
     </div>
   );
 }
 
 export default SessionLengthChart;
+
+

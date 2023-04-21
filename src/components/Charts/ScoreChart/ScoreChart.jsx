@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getUserMainData } from "../../../dataManager/dataManager";
 import { PieChart, Pie, Cell, Label } from "recharts";
-
+import "./ScoreChart.css"
 /**
  * UserPieChart component displays a pie chart of a user's score.
  * @returns {JSX.Element}
@@ -60,11 +60,12 @@ function UserPieChart() {
 
   // Render the pie chart with the user score data
   return (
-    <div className="Pie" style={{ width: "100%", height: 300, background: "#FBFBFB" }}>      <PieChart width={300} height={300}>
+    <div className="Pie" style={{ width: 258, height: 263, background: "#FBFBFB" }}>    
+      <PieChart width={258} height={263}>
       {/* Add a label for the chart */}
       <text
-        x={80}
-        y={78}
+        x={10}
+        y={18}
         fill="#20253A"
         style={{ fontSize: 15, fontWeight: "bold" }}
       >
@@ -72,8 +73,8 @@ function UserPieChart() {
       </text>
       <Pie
         data={data}
-        cx="50%"
-        cy="50%"
+        cx="40%"
+        cy="40%"
         innerRadius={60}
         outerRadius={80}
         fill="#8884d8"
