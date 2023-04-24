@@ -73,17 +73,19 @@ function UserPieChart() {
       </text>
       <Pie
         data={data}
-        cx="40%"
-        cy="40%"
-        innerRadius={60}
+        cx="50%"
+        cy="50%"
+        innerRadius={70}
         outerRadius={80}
         fill="#8884d8"
         paddingAngle={5}
         dataKey="value"
+        startAngle={90}
+            endAngle={450}
       >
         {/* Add slices for the chart */}
         {data.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+          <Cell key={`cell-${index}`} cornerRadius="50%" fill={COLORS[index % COLORS.length]} />
         ))}
         {/* Add a label for the chart */}
         <Label
@@ -92,9 +94,9 @@ function UserPieChart() {
             const percentage = `${Math.round(todayScore * 100)}%`;
             return (
               <g>
-                <text x={cx} y={cy - 10} textAnchor="middle" fontSize={20} fontWeight="700" fill="#282D30">{percentage}</text>
-                <text x={cx} y={cy + 10} textAnchor="middle" fontSize={20} fill="#282D30">de votre</text>
-                <text x={cx} y={cy + 30} textAnchor="middle" fontSize={20} fill="#282D30">objectif</text>
+                <text x={cx} y={cy - 10} textAnchor="middle" fontSize={26} fontFamily ="Roboto" fontWeight="700" fill="#282D30">{percentage}</text>
+                <text x={cx} y={cy + 10} textAnchor="middle" fontSize={15} fontFamily ="Roboto"fontWeight="500"  fill="#74798C">de votre</text>
+                <text x={cx} y={cy + 30} textAnchor="middle" fontSize={15} fill="#74798C">objectif</text>
               </g>
             );
           }}

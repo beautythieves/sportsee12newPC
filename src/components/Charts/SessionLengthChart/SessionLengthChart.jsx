@@ -12,6 +12,19 @@ import {
 } from "recharts";
 import "./SessionLengthChart.css";
 
+const CustomTooltip = ({ active, payload }) => {
+  if (active && payload && payload.length) {
+    const sessionLength = payload[0].value;
+    return (
+      <div className="session-custom-tooltip" style={{ color: "black", backgroundColor: "white", padding: "5px" }}>
+        <span className="session-tooltip-value">{sessionLength} min</span>
+      </div>
+    );
+  }
+  return null;
+};
+
+
 /**
  * SessionLengthChart component displays a line chart of a user's average session length per day.
  * @returns {JSX.Element}
@@ -105,6 +118,10 @@ function SessionLengthChart() {
           dataKey="day"
           tick={{ stroke: "white", strokeWidth: 0.4, fontSize: 12 }}
           style={{ textAnchor: "middle", transform: "translateY(-0px) " }}
+          axisLine={false}
+          tickLine={false}
+
+
         />
         <YAxis
           type="number"
@@ -114,16 +131,10 @@ function SessionLengthChart() {
           stroke="transparent"
           axisline={false}
         />
-  <Tooltip
-  formatter={(value) => {
-    console.log(value);
-    const sessionLength = value && value.payload ? value.payload.sessionLength : 0;
-    return `${sessionLength} min`;
-  }}
-  contentStyle={{ width: 50, height: 30 }}
-  label={null}
-  isAnimationActive={false}
-/>
+<Tooltip content={<CustomTooltip />} isAnimationActive={false} />
+
+
+
         <CartesianGrid stroke="#f5f5f5" vertical={false} />
         <CartesianGrid stroke="#f5f5f5" horizontal={false} />
         <Line type="monotone" data={userSessions} stroke="#fff" yAxis={null} dot={false} strokeWidth={2}  dataKey="sessionLength" />

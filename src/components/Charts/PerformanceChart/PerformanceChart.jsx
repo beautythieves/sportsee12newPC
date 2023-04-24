@@ -58,14 +58,18 @@ function PerformanceChart() {
     <div className="Perf" style={{ background: "#000000" }}>
     {/* <ResponsiveContainer width="100%" height="100%"><ResponsiveContainer width="100%" height="100%"> */}
 <RadarChart cx={129} cy={131.5} outerRadius={80} width={258} height={263} data={data} legend={{ fontSize: 12, fontWeight: 'bold' }}>
-<PolarGrid className="polar-grid" />
-<PolarAngleAxis dataKey="name" tick={{ stroke: "#FFFFFF", strokeWidth: 0.4 }} style={{ fontSize: 12, fontWeight: "normal" }} />
+<PolarGrid className="polar-grid" radialLines={false} />
+<PolarAngleAxis 
+dataKey="name" 
+dy={4}
+tickLine={false}
+tick={{ stroke: "#FFFFFF", strokeWidth: 0.4 }} style={{ fontSize: 12, fontWeight: "normal" }} />
         <Radar
   name="Performance"
   dataKey="value"
   stroke="#8884d8"
   fill="#8884d8"
-  fillOpacity={0.6}
+  fillOpacity={0.7}
   style={{ fontSize: 12, fontWeight: "bold", fill: "red" }}
 />
       </RadarChart>

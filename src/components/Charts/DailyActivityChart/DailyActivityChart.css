@@ -16,6 +16,9 @@
   
   .Daily{
     margin-top: 100px;
+    background: #FBFBFB;
+    margin-bottom: 20px;
+
   }
   
   .recharts-legend-item {
@@ -37,22 +40,30 @@
 .recharts-tooltip-wrapper {
   pointer-events: none;
   visibility: visible !important;
+display:flex;
 }
 
-.custom-tooltip {
-  background-color: #18ab58;
-  border: 1px solid #ccc;
-  padding: 10px 20px;
+.daily-custom-tooltip {
+  background-color: red;
   font-size: 14px;
   line-height: 1.5;
-  color: blue;
-  transform: translateY(-10px);
-  width:200px;
-
+  color:white;
+  width: 39px;
+  height: 63px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: space-around;
 }
-.label .tooltip-value {
-  margin-top: 10px;
+
+
+ .tooltip-value {
   writing-mode: horizontal-tb;
-  transform: rotate(180deg) translateX(-50%);
   background-color: red;
+  font-size: 7px;
+  font-weight:500;
+}
+.label{
+  display:flex;
+  flex-direction: column;
 }

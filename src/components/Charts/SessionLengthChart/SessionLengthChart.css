@@ -36,3 +36,12 @@
 .recharts-tooltip-cursor {
   display: none;
 }
+.session-custom-tooltip{
+  width: 25px;
+  height: 24px;
+  border: none;
+}
+.session-tooltip-value{
+  background-color: white;
+  font-size: 8px;
+}

@@ -11,17 +11,15 @@ const CustomTooltip = ({ active, payload }) => {
     const calories = `${payload[1].payload.calories} kcal`;
 
     return (
-      <div className="custom-tooltip">
-        <p className="label">
-          Poids: <span className="tooltip-value">{weight}</span>
-          <br />
-          Calories brûlées: <span className="tooltip-value">{calories}</span>
-        </p>
+      <div className="daily-custom-tooltip">
+        <span className="tooltip-value">{weight}</span>
+        <span className="tooltip-value">{calories}</span>
       </div>
     );
   }
   return null;
 };
+
 
 /**
  * DailyActivityChart component displays a bar chart showing daily activity for a user.
@@ -73,13 +71,7 @@ function DailyActivityChart() {
   // Calculate the ratio between the maximum weight and kcal
   const ratio = maxKcal / maxWeight;
 
-  // Function to calculate the height of the kcal bar
-const getKcalBarHeight = (data) => {
-  const weight = data.kilograms;
-  const kcal = data.calories;
-  const height = weight * ratio;
-  return height < 1 ? 1 : height * kcal / weight;
-};
+
   // Format the label for X axis of the chart
   const formatLabel = (value, index) => {
     if (!userActivity || userActivity.length === 0) {
@@ -102,8 +94,8 @@ const getKcalBarHeight = (data) => {
         <XAxis dataKey="day" tickCount={10} tickFormatter={formatLabel} />
         <YAxis
           orientation="right"
-          domain={[50, 100]}
-          ticks={[50, 60, 70, 80, 90, 100]}
+          domain={[0, 100]}
+          ticks={[40, 50, 60, 70, 80, 90, 100]}
           tickFormatter={(value) => `${value} `}
         />
 
@@ -123,9 +115,10 @@ const getKcalBarHeight = (data) => {
         />
         <Bar
           dataKey="calories"
-          barSize={7 * ratio}
+          barSize={7}
           name="Calories brûlées (kcal)"
           radius={[3, 3, 0, 0]}
+
         />
         <Legend
           verticalAlign="top"

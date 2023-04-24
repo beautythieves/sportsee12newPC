@@ -1,7 +1,6 @@
 
 
 .Perf .recharts-polar-angle-axis-tick-value tspan {
-  fill: red;
   font-size: 14px;
 }
 .polar-grid {
@@ -9,7 +8,7 @@
   height: 55px!important;
   fill: rgb(16, 39, 216);
   color:rgb(16, 39, 216);
-  fill-opacity: 0.3;
+  fill-opacity: 0.8;
 }
 .recharts-polar-grid-angle{
   width: 80px;
