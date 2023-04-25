@@ -13,7 +13,6 @@ function UserCalories() {
     async function fetchData() {
       try {
         const userData = await getUserMainData(userId);
-        console.log("Fetched user data for UserCalories:", userData);
         setUser(userData);
       } catch (err) {
         console.log("Error fetching user data for UserCalories:", err);

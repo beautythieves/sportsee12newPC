@@ -1,48 +1,61 @@
 .header-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-column-gap: 10px;
-  background-color: black;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  z-index:2;
+  background-color: black;
+  z-index: 2;
   position: relative;
-height:91px;
-width:1440px;
+  height: 91px;
+  width: 100%; /* Change the fixed width to a relative width */
+  padding: 0 10px; /* Add padding to the sides */
 }
 
 .header-logo {
-  grid-column: 1;
   width: 178px;
-  justify-self: left;
+  padding-left:30px;
+}
+
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  max-width: calc(100% - 178px - 20px); /* Subtract logo width and padding */
+  padding-left: 10px; /* Add padding between logo and nav items */
 }
 
 .header-accueil,
 .header-about,
 .header-services,
 .header-contact {
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+  color:white;
 }
-
-.header-accueil {
-  grid-column: 2;
-}
-
-.header-about {
-  grid-column: 3;
-}
-
-.header-services {
-  grid-column: 4;
-}
-
-.header-contact {
-  grid-column: 5;
-}
-
-h1 > a {
+.header-accueil a,
+.header-about a,
+.header-services a,
+.header-contact a {
   color: white;
   text-decoration: none;
-  font-size: 24px;
+  
+  font-size:24px;
+}
+/* Add media queries for responsiveness */
+@media screen and (min-width: 1024px) and (max-width: 1440px) {
+  .header-container {
+    flex-wrap: wrap; /* Wrap the items when there's not enough space */
+  }
+  
+  .header-nav {
+    width: 100%; /* Set nav items to 100% width */
+    padding-left: 0; /* Remove padding between logo and nav items */
+  }
+  
+  .header-logo {
+  
+    order: -1; /* Make sure the logo is always on top */
+  }
 }

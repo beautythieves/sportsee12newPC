@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getUserPerformance } from "../../../dataManager/dataManager";
-import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from "recharts";
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis,  } from "recharts";
 import { useParams } from "react-router-dom";
 import "./PerformanceChart.css";
 /**
@@ -36,6 +36,7 @@ const kindOrder = {
 function PerformanceChart() {
   const { userId } = useParams();
   const [data, setData] = useState([]);
+
   useEffect(() => {
     /**
      * Fetches user performance data and updates the state.
@@ -54,16 +55,19 @@ function PerformanceChart() {
     fetchData();
   }, [userId]);
 
+
+
+
   return (
     <div className="Perf" style={{ background: "#000000" }}>
-    {/* <ResponsiveContainer width="100%" height="100%"><ResponsiveContainer width="100%" height="100%"> */}
-<RadarChart cx={129} cy={131.5} outerRadius={80} width={258} height={263} data={data} legend={{ fontSize: 12, fontWeight: 'bold' }}>
+<RadarChart cx={129} cy={131.5} outerRadius={80} width={258} height={263} data={data} fill="white"
+          stroke="white" legend={{ fontSize: 12, fontWeight: 'bold' }}>
 <PolarGrid className="polar-grid" radialLines={false} />
 <PolarAngleAxis 
 dataKey="name" 
 dy={4}
 tickLine={false}
-tick={{ stroke: "#FFFFFF", strokeWidth: 0.4 }} style={{ fontSize: 12, fontWeight: "normal" }} />
+tick={{ stroke: "#FFFFFF", strokeWidth: 0.4 }} style={{ fontSize: 12, fontWeight: 500 }} />
         <Radar
   name="Performance"
   dataKey="value"

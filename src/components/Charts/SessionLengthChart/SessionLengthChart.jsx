@@ -16,7 +16,7 @@ const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     const sessionLength = payload[0].value;
     return (
-      <div className="session-custom-tooltip" style={{ color: "black", backgroundColor: "white", padding: "5px" }}>
+      <div className="session-custom-tooltip" style={{ color: "black", backgroundColor: "white", padding: "5px", border: "none" }}>
         <span className="session-tooltip-value">{sessionLength} min</span>
       </div>
     );
@@ -86,22 +86,7 @@ function SessionLengthChart() {
     return <div>Loading...</div>;
   }
 
-  // Format the label for X and Y axes of the chart
-  const formatLabel = (value) => {
-    if (value === 0) {
-      return "0 min";
-    }
-    const hours = Math.floor(value / 60);
-    const minutes = value % 60;
-    return `${hours > 0 ? `${hours}h ` : ""}${minutes}min`;
-  };
-
-  // Format the tooltip for the chart
-  const formatTooltip = (value) => {
-    const hours = Math.floor(value / 60);
-    const minutes = value % 60;
-    return `${hours > 0 ? `${hours}h ` : ""}${minutes}min`;
-  };
+  
 
   // Render the line chart with the user session data
   return (
@@ -133,12 +118,9 @@ function SessionLengthChart() {
         />
 <Tooltip content={<CustomTooltip />} isAnimationActive={false} />
 
-
-
         <CartesianGrid stroke="#f5f5f5" vertical={false} />
         <CartesianGrid stroke="#f5f5f5" horizontal={false} />
         <Line type="monotone" data={userSessions} stroke="#fff" yAxis={null} dot={false} strokeWidth={2}  dataKey="sessionLength" />
-        {console.log(userSessions, "achemene")}
 
 
       </LineChart>

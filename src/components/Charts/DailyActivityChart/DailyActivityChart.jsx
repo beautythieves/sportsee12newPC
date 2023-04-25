@@ -78,7 +78,6 @@ function DailyActivityChart() {
       return "";
     }
     const day = userActivity[index].day;
-    console.log(`formatLabel(${value}, ${index}) => ${day}`);
     return index + 1;
   };
 

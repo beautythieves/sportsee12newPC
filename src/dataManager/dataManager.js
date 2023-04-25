@@ -124,7 +124,6 @@ async function getUserPerformance(id) {
   const rawUserData = useMockedData
     ? await getMockedData("USER_PERFORMANCE", id)
     : await importFromBackEnd("performance", id);
-  console.log("RAW USER DATA: ", rawUserData);
   // const userData = Object.values(rawUserData); // Transform the object into an array
   return rawUserData;
 }

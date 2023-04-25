@@ -18,3 +18,11 @@
   stroke-width: 1px;
   opacity: 0.3;
 }
+
+svg > path:nth-of-type(1) {
+  fill:red;
+}
+
+.recharts-polar-grid-concentric-polygon {
+  stroke: hsl(0, 0%, 100%);}
+

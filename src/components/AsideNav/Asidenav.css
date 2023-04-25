@@ -2,7 +2,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 117px; /* ajustez la largeur selon vos besoins */
+    width: 117px; 
     height: 1024px;
     background-color:black;
     display: flex;
@@ -36,4 +36,8 @@
         font-size:12px;
       }
       
-  
+      @media screen and (min-width: 1024px) and (max-width: 1440px) {
+        .aside-container {
+          height: 1300px; 
+        }
+      }

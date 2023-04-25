@@ -25,7 +25,7 @@ function UserPieChart() {
       try {
         // Get user data from the data manager
         const userData = await getUserMainData(userId);
-
+         
         // Update the user state with the fetched data
         setUser(userData);
       } catch (err) {
@@ -47,7 +47,7 @@ function UserPieChart() {
   }
 
   // Get today's score from the user data
-  const { todayScore } = user;
+  const todayScore = user.score !== undefined ? user.score : user.todayScore;
 
   // Define the data for the pie chart
   const data = [
