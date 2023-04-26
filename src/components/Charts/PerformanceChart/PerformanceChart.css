@@ -20,7 +20,7 @@
 }
 
 svg > path:nth-of-type(1) {
-  fill:red;
+  fill:black;
 }
 
 .recharts-polar-grid-concentric-polygon {

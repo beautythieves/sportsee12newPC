@@ -20,6 +20,19 @@ const CustomTooltip = ({ active, payload }) => {
   return null;
 };
 
+function CustomLegendIcon(props) {
+  const { x, y, width, height, size, fill } = props;
+
+  return (
+    <svg width={width} height={height} x={x} y={y}>
+      <g className="legend-icon">
+        <circle cx={size / 2} cy={size / 2} r={size / 2 - 1} fill={fill} />
+      </g>
+    </svg>
+  );
+}
+
+
 
 /**
  * DailyActivityChart component displays a bar chart showing daily activity for a user.
@@ -87,7 +100,7 @@ function DailyActivityChart() {
   return (
     <div className="Daily">
       <BarChart width={835} height={320} data={userActivity}>
-        <text x={90} y={20} textAnchor="middle" fontWeight={500} fontSize={15}>
+        <text className= "Activite" x={90} y={40} textAnchor="middle"  fontWeight={600} fontSize={15}>
           Activité quotidienne
         </text>
         <XAxis dataKey="day" tickCount={10} tickFormatter={formatLabel} />
@@ -100,8 +113,7 @@ function DailyActivityChart() {
 
         <Tooltip
           content={<CustomTooltip />}
-          style={{ fontSize: "16px" }}
-          wrapperStyle={{ width: "120px", height: "60px" }}
+          
 
         />
         <Bar
@@ -110,6 +122,7 @@ function DailyActivityChart() {
           barSize={7}
           name="Poids (Kg)"
           radius={[3, 3, 0, 0]}
+          legendIcon={<CustomLegendIcon />}
 
         />
         <Bar
@@ -125,6 +138,8 @@ function DailyActivityChart() {
           iconType="circle"
           label={{ fontSize: 24, fontWeight: 500 }}
           wrapperStyle={{ color: "black" }}
+      
+
         />
 
 

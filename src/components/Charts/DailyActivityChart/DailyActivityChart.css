@@ -1,9 +1,10 @@
-.DailyTitle {
+.DailyTitle  {
     font-size: 15px;
     line-height: 24px;
-    font-weight: 500;
+    font-weight: 600;
     margin-top: 50px;
   }
+  
   .titleChart {
     font-size: 15px;
     line-height: 24px;
@@ -35,6 +36,10 @@
 .recharts-legend-item.legend-item-1 path{
   fill:red;
 }
+.recharts-legend-item-icon[name="Poids (Kg)"] circle {
+  fill: black !important;
+}
+
 
 
 .recharts-tooltip-wrapper {
@@ -54,7 +59,12 @@ display:flex;
   flex-direction: column;
   align-items: center; 
   justify-content: space-around;
+  border: none !important;;
 }
+.recharts-tooltip-wrapper {
+  border: none !important;
+}
+
 
 
  .tooltip-value {
@@ -66,4 +76,14 @@ display:flex;
 .label{
   display:flex;
   flex-direction: column;
+}
+
+.chart-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.recharts-legend-wrapper {
+  margin-top: 20px; 
 }
