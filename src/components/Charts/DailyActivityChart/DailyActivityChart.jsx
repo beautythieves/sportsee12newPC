@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { getUserActivity } from "../../../dataManager/dataManager";
 import { useParams } from "react-router-dom";
-import { BarChart, XAxis, YAxis, Tooltip, Bar, Legend } from "recharts";
+import { BarChart, XAxis, YAxis, Tooltip, Bar, Legend, CartesianGrid } from "recharts";
 import "./DailyActivityChart.css";
 
 const CustomTooltip = ({ active, payload }) => {
@@ -95,55 +95,73 @@ function DailyActivityChart() {
   };
 
 
-
+  console.log(userActivity);
   // Render the user's activity chart
   return (
     <div className="Daily">
       <BarChart width={835} height={320} data={userActivity}>
-        <text className= "Activite" x={90} y={40} textAnchor="middle"  fontWeight={600} fontSize={15}>
+        <text className="Activite" x={90} y={40} textAnchor="middle" fontWeight={600} fontSize={15}>
           Activité quotidienne
         </text>
-        <XAxis dataKey="day" tickCount={10} tickFormatter={formatLabel} />
+       
+        <XAxis dataKey="day"
+         tickCount={10}
+          tickFormatter={formatLabel} 
+          tickLine={false}
+          stroke="#999"
+          />
+          
         <YAxis
           orientation="right"
-          domain={[0, 100]}
-          ticks={[40, 50, 60, 70, 80, 90, 100]}
+          dataKey="kilograms"
+          domain={["dataMin - 1", "dataMax + 2"]}
+          ticks={[60, 70, 80]}
           tickFormatter={(value) => `${value} `}
-        />
+          yAxisId="Kilograms"
+          axisLine={false}
+          tickLine={false}
+          tick={{
+    stroke: "#999", // Set the stroke color to the desired shade of gray
+    strokeWidth: 0.1 // Set the stroke width to make the tick lines more visible
+  }}
 
+        />
+        <YAxis
+          orientation="left"
+          dataKey="calories"
+          ticks={10}
+          // yAxisId="calories"
+          tickFormatter={(value) => `${value} `}
+          domain={[0, "dataMax + 50"]}
+          hide={true}
+        />
         <Tooltip
           content={<CustomTooltip />}
-          
-
         />
-        <Bar
+         <Bar
           dataKey="kilograms"
           fill="#E6000"
           barSize={7}
           name="Poids (Kg)"
           radius={[3, 3, 0, 0]}
           legendIcon={<CustomLegendIcon />}
-
+          yAxisId="Kilograms"
         />
         <Bar
           dataKey="calories"
           barSize={7}
           name="Calories brûlées (kcal)"
           radius={[3, 3, 0, 0]}
-
+          // yAxisId= "Calories"
         />
+       
         <Legend
           verticalAlign="top"
           align="right"
           iconType="circle"
           label={{ fontSize: 24, fontWeight: 500 }}
           wrapperStyle={{ color: "black" }}
-      
-
         />
-
-
-
       </BarChart>
     </div>
   );

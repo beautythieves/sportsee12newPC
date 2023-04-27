@@ -4,7 +4,12 @@ import swim from "./swim.png";
 import bike from "./bike.png";
 import fitness from "./fitness.png";
 import "./Asidenav.css";
-export default function AsideNav() {
+
+/**
+ * Renders an aside element containing four icons and a copyright notice.
+ * @returns {JSX.Element} The rendered aside element.
+ */
+function AsideNav() {
   return (
     <aside className="aside-container">
       <div className="icons-container">
@@ -25,3 +30,6 @@ export default function AsideNav() {
     </aside>
   );
 }
+
+
+export default AsideNav;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getUserPerformance } from "../../../dataManager/dataManager";
-import { Radar, RadarChart, PolarGrid, PolarAngleAxis,  } from "recharts";
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, } from "recharts";
 import { useParams } from "react-router-dom";
 import "./PerformanceChart.css";
 /**
@@ -60,22 +60,23 @@ function PerformanceChart() {
 
   return (
     <div className="Perf" style={{ background: "#000000" }}>
-<RadarChart cx={129} cy={131.5} outerRadius={80} width={258} height={263} data={data} fill="white"
-          stroke="white" legend={{ fontSize: 12, fontWeight: 'bold' }}>
-<PolarGrid className="polar-grid" radialLines={false} />
-<PolarAngleAxis 
-dataKey="name" 
-dy={4}
-tickLine={false}
-tick={{ stroke: "#FFFFFF", strokeWidth: 0.4 }} style={{ fontSize: 12, fontWeight: 500 }} />
+      <RadarChart cx={129} cy={131.5} outerRadius={80} width={258} height={263} data={data} fill="white"
+        stroke="white" legend={{ fontSize: 12, fontWeight: 'bold' }}>
+        <PolarGrid className="polar-grid" radialLines={false} />
+        <PolarAngleAxis
+        stroke="white"
+          dataKey="name"
+          dy={4}
+          tickLine={false}
+          tick={{ stroke: "#yellow", strokeWidth: 0.4 }} style={{ fontSize: 12, fontWeight: 500 }} />
         <Radar
-  name="Performance"
-  dataKey="value"
-  stroke="#8884d8"
-  fill="#8884d8"
-  fillOpacity={0.7}
-  style={{ fontSize: 12, fontWeight: "bold", fill: "red" }}
-/>
+          name="Performance"
+          dataKey="value"
+          stroke="#8884d8"
+          fill="#8884d8"
+          fillOpacity={0.7}
+          style={{ fontSize: 12, fontWeight: "bold", fill: "red" }}
+        />
       </RadarChart>
     </div>
   );

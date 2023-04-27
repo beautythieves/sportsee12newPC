@@ -6,6 +6,8 @@ import "./UserGreeting.css";
 
 /**
  * UserGreeting component displays a greeting message for the user.
+ * @param {Object} props - The React props object.
+ * @param {string} props.userId - The user's ID.
  * @returns {JSX.Element}
  */
 function UserGreeting({ userId }) {

@@ -20,8 +20,9 @@ function UserPage() {
   // Extract userId from the URL using useParams
   const { userId } = useParams();
 
-  // Initialize state variable for user data
+  // Initialize state variables for user data and error status
   const [userData, setUserData] = useState(null);
+  const [error, setError] = useState(false);
 
   // Fetch user data when the component mounts or when userId changes
   useEffect(() => {
@@ -30,16 +31,27 @@ function UserPage() {
      * @async
      */
     async function fetchData() {
-      // Get user main data from the data manager
-      const data = await getUserMainData(userId);
+      try {
+        // Get user main data from the data manager
+        const data = await getUserMainData(userId);
 
-      // Update the userData state with the fetched data
-      setUserData(data);
+        // Update the userData state with the fetched data
+        setUserData(data);
+      } catch (err) {
+        // If there's an error fetching data, set the error state to true
+        console.log(err);
+        setError(true);
+      }
     }
 
     // Call fetchData to fetch user data
     fetchData();
   }, [userId]);
+
+  // If there's an error, display an error message
+  if (error) {
+    return <div>Error: Failed to load user data.</div>;
+  }
 
   // If user data is not yet loaded, display a loading message
   if (!userData) {
@@ -51,9 +63,9 @@ function UserPage() {
     <div className="UserContainer">
       <div className="Charts">
         <UserGreeting userId={userId} />
-        <DailyActivityChart userId ={userId} />
+        <DailyActivityChart userId={userId} />
         <div className="ChartsInRow">
-          <SessionLengthChart userId= {userId} />
+          <SessionLengthChart userId={userId} />
           <PerformanceChart />
           <UserPieChart />
         </div>
