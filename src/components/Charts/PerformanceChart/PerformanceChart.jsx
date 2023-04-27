@@ -60,7 +60,7 @@ function PerformanceChart() {
 
   return (
     <div className="Perf" style={{ background: "#000000" }}>
-      <RadarChart cx={129} cy={131.5} outerRadius={80} width={258} height={263} data={data} fill="white"
+      <RadarChart cx={129} cy={131.5} outerRadius={80} width={258} height={263} data={data} fill="red"
         stroke="white" legend={{ fontSize: 12, fontWeight: 'bold' }}>
         <PolarGrid className="polar-grid" radialLines={false} />
         <PolarAngleAxis
@@ -76,6 +76,11 @@ function PerformanceChart() {
           fill="#8884d8"
           fillOpacity={0.7}
           style={{ fontSize: 12, fontWeight: "bold", fill: "red" }}
+
+
+
+
+          
         />
       </RadarChart>
     </div>

@@ -7,18 +7,21 @@ import "./DailyActivityChart.css";
 
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
-    const weight = `${payload[0].payload.kilograms} kg`;
-    const calories = `${payload[1].payload.calories} kcal`;
+    const weight = payload.find((item) => item.name === "Poids (Kg)");
+    const calories = payload.find((item) => item.name === "Calories brûlées (kcal)");
 
     return (
       <div className="daily-custom-tooltip">
-        <span className="tooltip-value">{weight}</span>
-        <span className="tooltip-value">{calories}</span>
+        <span className="tooltip-value">{weight.value} kg</span>
+        <span className="tooltip-value">{calories.value} kcal</span>
       </div>
     );
   }
   return null;
 };
+
+
+
 
 function CustomLegendIcon(props) {
   const { x, y, width, height, size, fill } = props;
@@ -31,6 +34,7 @@ function CustomLegendIcon(props) {
     </svg>
   );
 }
+
 
 
 
@@ -77,12 +81,9 @@ function DailyActivityChart() {
   if (!userActivity) {
     return <div>Loading...</div>;
   }
-  // Calculate the maximum weight and kcal in the data
-  const maxWeight = Math.max(...userActivity.map((data) => data.kilograms));
-  const maxKcal = Math.max(...userActivity.map((data) => data.calories));
 
-  // Calculate the ratio between the maximum weight and kcal
-  const ratio = maxKcal / maxWeight;
+
+
 
 
   // Format the label for X axis of the chart
@@ -95,22 +96,53 @@ function DailyActivityChart() {
   };
 
 
-  console.log(userActivity);
+  // console.log(userActivity);
   // Render the user's activity chart
+
+
+
   return (
     <div className="Daily">
-      <BarChart width={835} height={320} data={userActivity}>
+      <BarChart width={835} height={320} data={userActivity} dataKey="calories"
+
+
+      >
+
+        <Bar
+          dataKey="kilograms"
+          fill="#E6000"
+          barSize={7}
+          name="Poids (Kg)"
+          radius={[3, 3, 0, 0]}
+
+          yAxisId="Kilograms"
+          onClick={(data, index, e) => console.log('kilograms', data)}
+    zIndex={2}
+        />
+        <Bar
+          dataKey="calories"
+          barSize={7}
+          name="Calories brûlées (kcal)"
+          radius={[3, 3, 0, 0]}
+          legendIcon={<CustomLegendIcon />}
+          onClick={(data, index, e) => console.log('calories', data)}
+zIndex={1}
+        // yAxisId= "Calories"
+        />
+
+
+
+
         <text className="Activite" x={90} y={40} textAnchor="middle" fontWeight={600} fontSize={15}>
           Activité quotidienne
         </text>
-       
         <XAxis dataKey="day"
-         tickCount={10}
-          tickFormatter={formatLabel} 
+          tickCount={10}
+          tickFormatter={formatLabel}
           tickLine={false}
           stroke="#999"
-          />
-          
+        />
+
         <YAxis
           orientation="right"
           dataKey="kilograms"
@@ -121,9 +153,9 @@ function DailyActivityChart() {
           axisLine={false}
           tickLine={false}
           tick={{
-    stroke: "#999", // Set the stroke color to the desired shade of gray
-    strokeWidth: 0.1 // Set the stroke width to make the tick lines more visible
-  }}
+            stroke: "#999", // Set the stroke color to the desired shade of gray
+            strokeWidth: 0.1 // Set the stroke width to make the tick lines more visible
+          }}
 
         />
         <YAxis
@@ -138,29 +170,26 @@ function DailyActivityChart() {
         <Tooltip
           content={<CustomTooltip />}
         />
-         <Bar
-          dataKey="kilograms"
-          fill="#E6000"
-          barSize={7}
-          name="Poids (Kg)"
-          radius={[3, 3, 0, 0]}
-          legendIcon={<CustomLegendIcon />}
-          yAxisId="Kilograms"
-        />
-        <Bar
-          dataKey="calories"
-          barSize={7}
-          name="Calories brûlées (kcal)"
-          radius={[3, 3, 0, 0]}
-          // yAxisId= "Calories"
-        />
-       
+
+
         <Legend
           verticalAlign="top"
           align="right"
           iconType="circle"
           label={{ fontSize: 24, fontWeight: 500 }}
-          wrapperStyle={{ color: "black" }}
+          wrapperStyle={{ color: "black", top: 0 }}
+          payload={[
+            {
+              value: "Poids (Kg)",
+              type: "circle",
+              color: "#000000",
+            },
+            {
+              value: "Calories brûlées (kcal)",
+              type: "circle",
+              color: "#E60000",
+            },
+          ]}
         />
       </BarChart>
     </div>

@@ -66,8 +66,8 @@ function UserPage() {
         <DailyActivityChart userId={userId} />
         <div className="ChartsInRow">
           <SessionLengthChart userId={userId} />
-          <PerformanceChart />
-          <UserPieChart />
+          <PerformanceChart userId={userId} />
+        <UserPieChart userId={userId} />
         </div>
       </div>
       <div className="Energy">

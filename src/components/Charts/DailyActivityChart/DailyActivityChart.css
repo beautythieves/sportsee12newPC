@@ -13,6 +13,7 @@
   .recharts-legend-item-text {
     font-size: 14px;
     font-weight: 500;
+    color: black !important;
   }
   
   .Daily{
@@ -24,11 +25,11 @@
   
   .recharts-legend-item {
     fill: black !important;
-    color:black;
+    color:black ! important;
   }
-  .recharts-legend-item-text[name="Calories brûlées (kcal)"] {
-    color: black;
-  }
+  /* .recharts-legend-item-text[name="Calories brûlées (kcal)"] {
+    color: rgb(249, 8, 8);
+  } */
 
   path[name="Calories brûlées (kcal)"] {
     fill: red;
@@ -46,6 +47,7 @@
   pointer-events: none;
   visibility: visible !important;
 display:flex;
+border:none;
 }
 
 .daily-custom-tooltip {
