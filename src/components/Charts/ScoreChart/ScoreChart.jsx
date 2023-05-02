@@ -65,8 +65,8 @@ function UserPieChart() {
       <PieChart width={258} height={263}>
         {/* Add a label for the chart */}
         <text
-          x={10}
-          y={18}
+          x={30}
+          y={30}
           fill="#20253A"
           style={{ fontSize: 15, fontWeight: "bold" }}
         >
@@ -96,8 +96,8 @@ function UserPieChart() {
               return (
                 <g>
                   <text x={cx} y={cy - 10} textAnchor="middle" fontSize={26} fontFamily="Roboto" fontWeight="700" fill="#282D30">{percentage}</text>
-                  <text x={cx} y={cy + 10} textAnchor="middle" fontSize={15} fontFamily="Roboto" fontWeight="500" fill="#74798C">de votre</text>
-                  <text x={cx} y={cy + 30} textAnchor="middle" fontSize={15} fill="#74798C">objectif</text>
+                  <text x={cx} y={cy + 10} textAnchor="middle" fontSize={15} fontFamily="Roboto" fontWeight="600" fill="#74798C">de votre</text>
+                  <text x={cx} y={cy + 30} textAnchor="middle" fontSize={15} fontFamily = "Roboto" fontWeight="600" fill="#74798C">objectif</text>
                 </g>
               );
             }}
