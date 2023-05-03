@@ -108,11 +108,8 @@ function DailyActivityChart() {
         height={320}
         data={userActivity}
         dataKey="calories"
-        
       >
-        <CartesianGrid className= "DailyGrid" vertical={false} strokeDasharray="2 2" />
-     
-
+        <CartesianGrid className="DailyGrid" vertical={false} strokeDasharray="2 2" stroke="grey"/>
         <Bar
           dataKey="kilograms"
           fill="#E6000"
@@ -122,9 +119,7 @@ function DailyActivityChart() {
           yAxisId="KilogramsLeft"
           onClick={(data, index, e) => console.log('kilograms', data)}
           zIndex={2}
-        
         />
-
         <Bar
           dataKey="calories"
           barSize={7}
@@ -134,7 +129,7 @@ function DailyActivityChart() {
           onClick={(data, index, e) => console.log('calories', data)}
           zIndex={1}
           yAxisId="CaloriesRight"
-        
+
         />
 
         <text className="Activite" x={90} y={40} textAnchor="middle" fontWeight={600} fontSize={15}>

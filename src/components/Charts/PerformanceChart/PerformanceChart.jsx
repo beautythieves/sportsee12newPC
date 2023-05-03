@@ -76,11 +76,7 @@ function PerformanceChart() {
           fill="#8884d8"
           fillOpacity={0.7}
           style={{ fontSize: 12, fontWeight: "bold", fill: "red" }}
-
-
-
-
-          
+       
         />
       </RadarChart>
     </div>
