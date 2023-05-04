@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { getUserActivity } from "../../../dataManager/dataManager";
 import { useParams } from "react-router-dom";
-import { BarChart, XAxis, YAxis, Tooltip, Bar, Legend, CartesianGrid } from "recharts";
+import {   BarChart, XAxis, YAxis, Tooltip, Bar, Legend, CartesianGrid } from "recharts";
 import "./DailyActivityChart.css";
 
 const CustomTooltip = ({ active, payload }) => {
@@ -21,12 +21,8 @@ const CustomTooltip = ({ active, payload }) => {
 };
 
 
-
-
-
 function CustomLegendIcon(props) {
   const { x, y, width, height, size, fill } = props;
-
   return (
     <svg width={width} height={height} x={x} y={y}>
       <g className="legend-icon">
@@ -36,9 +32,6 @@ function CustomLegendIcon(props) {
   );
 }
 
-
-
-
 /**
  * DailyActivityChart component displays a bar chart showing daily activity for a user.
  * @returns {JSX.Element}
@@ -46,12 +39,10 @@ function CustomLegendIcon(props) {
 function DailyActivityChart() {
   // Extract userId from the URL using useParams
   const { userId } = useParams();
-
-
-
   // Initialize state variables for user activity and error status
   const [userActivity, setUserActivity] = useState(null);
   const [error, setError] = useState(false);
+
 
   // Fetch user activity data when the component mounts or when userId changes
   useEffect(() => {
@@ -70,25 +61,17 @@ function DailyActivityChart() {
         setError(true);
       }
     }
-
     // Call fetchData to fetch user activity data
     fetchData();
   }, [userId]);
-
   // If there was an error while fetching data, display an error message
   if (error) {
     return <div>Error: Failed to load user data for activity chart.</div>;
   }
-
   // If user activity data is not yet loaded, display a loading message
   if (!userActivity) {
     return <div>Loading...</div>;
   }
-
-
-
-
-
   // Format the label for X axis of the chart
   const formatLabel = (value, index) => {
     if (!userActivity || userActivity.length === 0) {
@@ -96,20 +79,17 @@ function DailyActivityChart() {
     }
     return index + 1;
   };
-
-
-
-
-
+  // Return the chart
   return (
     <div className="Daily">
       <BarChart
         width={835}
         height={320}
         data={userActivity}
-        dataKey="calories"
-      >
-        <CartesianGrid className="DailyGrid" vertical={false} strokeDasharray="2 2" stroke="grey"/>
+              >
+        <CartesianGrid className="DailyGrid" vertical={false} strokeDasharray="2 2" stroke="grey" />
+       
+       
         <Bar
           dataKey="kilograms"
           fill="#E6000"
@@ -117,8 +97,8 @@ function DailyActivityChart() {
           name="Poids (Kg)"
           radius={[3, 3, 0, 0]}
           yAxisId="KilogramsLeft"
-          onClick={(data, index, e) => console.log('kilograms', data)}
-          zIndex={2}
+         
+
         />
         <Bar
           dataKey="calories"
@@ -126,12 +106,10 @@ function DailyActivityChart() {
           name="Calories brûlées (kcal)"
           radius={[3, 3, 0, 0]}
           legendIcon={<CustomLegendIcon />}
-          onClick={(data, index, e) => console.log('calories', data)}
-          zIndex={1}
           yAxisId="CaloriesRight"
-
+       
+      
         />
-
         <text className="Activite" x={90} y={40} textAnchor="middle" fontWeight={600} fontSize={15}>
           Activité quotidienne
         </text>
@@ -139,7 +117,6 @@ function DailyActivityChart() {
           tickCount={10}
           tickFormatter={formatLabel}
           tickLine={false}
-          // stroke="#999"
           className="DailyXAxis"
         />
         <YAxis
@@ -160,7 +137,7 @@ function DailyActivityChart() {
         <YAxis
           orientation="right"
           dataKey="calories"
-          ticks={10}
+          tickCount={10}
           tickFormatter={(value) => `${value} `}
           domain={[0, "dataMax + 50"]}
           hide={true}
@@ -170,8 +147,6 @@ function DailyActivityChart() {
         <Tooltip
           content={<CustomTooltip />}
         />
-
-
         <Legend
           verticalAlign="top"
           align="right"
@@ -195,7 +170,6 @@ function DailyActivityChart() {
     </div>
   );
 }
-
 // Define PropTypes for the component
 DailyActivityChart.propTypes = {
   userId: PropTypes.string.isRequired,

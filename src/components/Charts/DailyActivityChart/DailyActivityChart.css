@@ -1,50 +1,52 @@
-.DailyTitle  {
-    font-size: 15px;
-    line-height: 24px;
-    font-weight: 600;
-    margin-top: 50px;
-  }
-  
-  .titleChart {
-    font-size: 15px;
-    line-height: 24px;
-    font-weight: 500;
-  }
-  .recharts-legend-item-text {
-    font-size: 14px;
-    font-weight: 500;
-    color: black !important;
-  }
-  
-  .Daily{
-    margin-top: 100px;
-    background: #FBFBFB;
-    margin-bottom: 20px;
-
-  }
-  
-  .recharts-legend-item {
-    fill: black !important;
-    color:black ! important;
-  }
- 
-
-  path[name="Calories brûlées (kcal)"] {
-    fill: red;
+.DailyTitle {
+  font-size: 15px;
+  line-height: 24px;
+  font-weight: 600;
+  margin-top: 50px;
 }
-.recharts-legend-item.legend-item-1 path{
-  fill:red;
+
+.titleChart {
+  font-size: 15px;
+  line-height: 24px;
+  font-weight: 500;
 }
+
+.recharts-legend-item-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: black !important;
+}
+
+.Daily {
+  margin-top: 100px;
+  margin-bottom: 20px;
+  background: transparent;
+}
+
+.recharts-legend-item {
+  fill: black !important;
+  color: black ! important;
+}
+
+path[name="Calories brûlées (kcal)"] {
+  fill: red;
+}
+
+.recharts-legend-item.legend-item-1 path {
+  fill: red;
+}
+
 .recharts-legend-item-icon[name="Poids (Kg)"] circle {
   fill: black !important;
 }
 
 .recharts-cartesian-grid-horizontal line:hover {
-  stroke: rgba(0, 0, 0, 0.1);
+  stroke: rgba(23, 183, 66, 0.5);
   stroke-width: 100%;
   pointer-events: all;
 }
-.DailyGrid line{
+
+.DailyGrid line {
   stroke-width: 100%;
 }
 
@@ -52,42 +54,43 @@
   font-size: 12px;
   font-weight: 500;
   color: black;
-  fill:black;
+  fill: black;
 }
+
 .recharts-tooltip-wrapper {
-  pointer-events: none;
+  pointer-events: auto;
   visibility: visible !important;
-display:flex;
-border:red;
+  display: flex;
+  border: red;
 }
 
 .daily-custom-tooltip {
   background-color: red;
   font-size: 14px;
   line-height: 1.5;
-  color:white;
+  color: white;
   width: 39px;
   height: 63px;
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
   justify-content: space-around;
-  border: red !important;;
+  border: red !important;
+  ;
 }
+
 .recharts-tooltip-wrapper {
   border: none !important;
 }
-
-
-
- .tooltip-value {
+.tooltip-value {
   writing-mode: horizontal-tb;
   background-color: red;
   font-size: 7px;
-  font-weight:500;
+  font-weight: 500;
 }
-.label{
-  display:flex;
+
+.label {
+  display: flex;
   flex-direction: column;
 }
 
@@ -98,9 +101,9 @@ border:red;
 }
 
 .recharts-legend-wrapper {
-  margin-top: 20px; 
+  margin-top: 20px;
 }
 
-.Daily .recharts-cartesian-grid-horizontal line:not(:last-of-type):not(:nth-of-type(4)){
-  stroke: black!important;
+.Daily .recharts-cartesian-grid-horizontal line:not(:last-of-type):not(:nth-of-type(4)) {
+  stroke: black !important;
 }
