@@ -61,7 +61,7 @@ path[name="Calories brûlées (kcal)"] {
   pointer-events: auto;
   visibility: visible !important;
   display: flex;
-  border: red;
+  border: red !important;
 }
 
 .daily-custom-tooltip {
@@ -105,5 +105,13 @@ path[name="Calories brûlées (kcal)"] {
 }
 
 .Daily .recharts-cartesian-grid-horizontal line:not(:last-of-type):not(:nth-of-type(4)) {
-  stroke: black !important;
+  stroke: rgba(196, 196, 196, 0.5) !important;
+}
+
+/* rsize and style the recharts-tooltip-cursor */
+.recharts-tooltip-cursor {
+  fill: rgba(196, 196, 196, 0.5)! important;
+  stroke-width: 2px;
+  pointer-events: none;
+  
 }

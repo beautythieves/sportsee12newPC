@@ -86,8 +86,6 @@ function SessionLengthChart() {
     return <div>Loading...</div>;
   }
 
-  
-
   // Render the line chart with the user session data
   return (
     <div className="Session">
@@ -96,7 +94,7 @@ function SessionLengthChart() {
         width={268}
         height={263}
         data={userSessions}
-        cursor="default"
+        cursor={{stroke:"red, strokeWidth: 2"}}
         margin={{ top: 20, right: 10, left: 10, bottom: 30 }}
       >
         <XAxis

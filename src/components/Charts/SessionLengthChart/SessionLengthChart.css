@@ -33,13 +33,13 @@
 .CartesianGrid-horizontal line {
   stroke: red;
 }
-.recharts-tooltip-cursor {
+/* .recharts-tooltip-cursor {
   display: none;
-}
+} */
 .session-custom-tooltip{
   width: 25px;
   height: 24px;
-  border: none;
+  border: none! important;
 }
 .session-tooltip-value{
   background-color: white;
