@@ -16,7 +16,7 @@ const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     const sessionLength = payload[0].value;
     return (
-      <div className="session-custom-tooltip" style={{ color: "black", backgroundColor: "white", padding: "5px", border: "none" }}>
+      <div className="session-custom-tooltip" style={{ color: "black", backgroundColor: "white", padding: "5px", border: "none!important" }}>
         <span className="session-tooltip-value">{sessionLength} min</span>
       </div>
     );

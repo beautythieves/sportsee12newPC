@@ -108,10 +108,10 @@ path[name="Calories brûlées (kcal)"] {
   stroke: rgba(196, 196, 196, 0.5) !important;
 }
 
-/* rsize and style the recharts-tooltip-cursor */
+/* resize and style the recharts-tooltip-cursor */
 .recharts-tooltip-cursor {
   fill: rgba(196, 196, 196, 0.5)! important;
   stroke-width: 2px;
   pointer-events: none;
-  
+  stroke: red !important;
 }

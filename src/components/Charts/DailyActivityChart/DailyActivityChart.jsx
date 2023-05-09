@@ -11,7 +11,7 @@ const CustomTooltip = ({ active, payload }) => {
     const calories = payload.find((item) => item.name === "Calories brûlées (kcal)");
 
     return (
-      <div className="daily-custom-tooltip">
+      <div className="daily-custom-tooltip" style ={{borderColor:"none!important"}}>
         <span className="tooltip-value">{weight.value} kg</span>
         <span className="tooltip-value">{calories.value} kcal</span>
       </div>
