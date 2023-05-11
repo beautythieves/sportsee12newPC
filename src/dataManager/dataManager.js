@@ -120,7 +120,6 @@ export { getUserAverageSessions };
  * @returns {Array} - The user performance data.
  */
 async function getUserPerformance(id) {
-  console.log("getUserPerformance called with id:", id);
   const rawUserData = useMockedData
     ? await getMockedData("USER_PERFORMANCE", id)
     : await importFromBackEnd("performance", id);
@@ -131,7 +130,6 @@ async function getUserPerformance(id) {
 async function getMockedData(src, userId) {
   if (Object.keys(mockedData[src]).length === 0) await importMockedData();
   const data = mockedData[src].find((u) => u.userId === parseInt(userId));
-  console.log(data, mockedData[src], mockedData, src);
   return data;
 }
 

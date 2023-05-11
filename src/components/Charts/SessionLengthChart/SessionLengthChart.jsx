@@ -12,11 +12,19 @@ import {
 } from "recharts";
 import "./SessionLengthChart.css";
 
+
+/**
+ * CustomTooltip for the LineChart. Displays the session length when hovered.
+ * @param {object} props - The props passed to the component.
+ * @param {boolean} props.active - Whether the tooltip should be active.
+ * @param {Array} props.payload - The payload data for the tooltip.
+ * @returns {JSX.Element|null}
+ */
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     const sessionLength = payload[0].value;
     return (
-      <div className="session-custom-tooltip" style={{ color: "black", backgroundColor: "white", padding: "5px", border: "none!important" }}>
+      <div className="session-custom-tooltip" style={{ color: "black", backgroundColor: "white", padding: "5px", border: "red!important" }}>
         <span className="session-tooltip-value">{sessionLength} min</span>
       </div>
     );

@@ -5,6 +5,11 @@ import Protein from "./Protein.png";
 import "./Calory.css";
 import backgroundProt from "./backgroundProt.png";
 
+
+/**
+ * it fetches the user's protein count and displays it.
+ * @returns {JSX.Element} the rendered component
+ */
 function Proteins() {
   const { userId } = useParams();
   const [user, setUser] = useState(null);

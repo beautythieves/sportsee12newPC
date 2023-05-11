@@ -5,11 +5,7 @@
   width:268px;
   height: 268px;
 }
-/* 
-.SessionLengthChart line,
-.SessionLengthChart path {
-  stroke: white;
-} */
+
 .sessionTitle{
   color: white;
   font-size: 15px;
@@ -39,7 +35,7 @@
 .session-custom-tooltip{
   width: 25px;
   height: 24px;
-  border: none! important;
+  border: red! important;
 }
 .session-tooltip-value{
   background-color: white;

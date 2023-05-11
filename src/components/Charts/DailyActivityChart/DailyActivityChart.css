@@ -61,7 +61,7 @@ path[name="Calories brûlées (kcal)"] {
   pointer-events: auto;
   visibility: visible !important;
   display: flex;
-  border: red !important;
+  /* border: red !important; */
 }
 
 .daily-custom-tooltip {
@@ -75,8 +75,9 @@ path[name="Calories brûlées (kcal)"] {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  border: red !important;
-  ;
+  stroke:red;
+  /* border: red !important; */
+  
 }
 
 .recharts-tooltip-wrapper {
@@ -113,5 +114,5 @@ path[name="Calories brûlées (kcal)"] {
   fill: rgba(196, 196, 196, 0.5)! important;
   stroke-width: 2px;
   pointer-events: none;
-  stroke: red !important;
+  stroke: transparent!important;
 }

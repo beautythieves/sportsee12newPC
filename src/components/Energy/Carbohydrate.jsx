@@ -5,6 +5,11 @@ import { getUserMainData } from "../../dataManager/dataManager";
 import Carbo from "./Carbohydrate.png";
 import "./Calory.css";
 import backgroundCarb from "./backgroundCarb.png";
+
+/**
+ * the Carbohydrate component displays the user's carbohydrate count.
+ * @returns {JSX.Element} the rendered component
+ */
 function Carbohydrate () {
   const { userId } = useParams();
   const [user, setUser] = useState(null);

@@ -5,13 +5,20 @@ import { useParams } from "react-router-dom";
 import {   BarChart, XAxis, YAxis, Tooltip, Bar, Legend, CartesianGrid } from "recharts";
 import "./DailyActivityChart.css";
 
+/**
+ * CustomTooltip component displays a custom tooltip for the chart.
+ * @param {Object} props - Props for the component.
+ * @param {boolean} props.active - Whether the tooltip is active.
+ * @param {Array} props.payload - The payload of the tooltip.
+ * @returns {JSX.Element|null} - The custom tooltip JSX element or null if not active.
+ */
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     const weight = payload.find((item) => item.name === "Poids (Kg)");
     const calories = payload.find((item) => item.name === "Calories brûlées (kcal)");
 
     return (
-      <div className="daily-custom-tooltip" style ={{borderColor:"none!important"}}>
+      <div className="daily-custom-tooltip" style ={{borderColor:"red!important"}}>
         <span className="tooltip-value">{weight.value} kg</span>
         <span className="tooltip-value">{calories.value} kcal</span>
       </div>
@@ -20,7 +27,17 @@ const CustomTooltip = ({ active, payload }) => {
   return null;
 };
 
-
+/**
+ * CustomLegendIcon component displays a custom legend icon for the chart.
+ * @param {Object} props - Props for the component.
+ * @param {number} props.x - The x coordinate of the icon.
+ * @param {number} props.y - The y coordinate of the icon.
+ * @param {number} props.width - The width of the icon.
+ * @param {number} props.height - The height of the icon.
+ * @param {number} props.size - The size of the icon.
+ * @param {string} props.fill - The fill color of the icon.
+ * @returns {JSX.Element} - The custom legend icon JSX element.
+ */
 function CustomLegendIcon(props) {
   const { x, y, width, height, size, fill } = props;
   return (
@@ -34,7 +51,7 @@ function CustomLegendIcon(props) {
 
 /**
  * DailyActivityChart component displays a bar chart showing daily activity for a user.
- * @returns {JSX.Element}
+ * @returns {JSX.Element} .The daily activity chart JSX element.
  */
 function DailyActivityChart() {
   // Extract userId from the URL using useParams

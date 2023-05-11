@@ -4,6 +4,12 @@ import { getUserMainData } from "../../dataManager/dataManager";
 import cheeseburger from "./cheeseburger.svg";
 import "./Calory.css";
 import backgroundFat from "./backgroundFat.png";
+
+
+/**
+ * it fetches the user's fat count and displays it.
+ * @returns {JSX.Element} the rendered component
+ */
 function Fat () {
   const { userId } = useParams();
   const [user, setUser] = useState(null);

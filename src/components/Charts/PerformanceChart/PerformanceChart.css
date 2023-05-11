@@ -22,10 +22,6 @@ svg > path:nth-of-type(1) {
   fill:black;
 }
 
-/* .recharts-polar-grid-concentric-polygon {
-  stroke: hsl(0, 0%, 100%);
-  stroke-width: 2px;
-} */
 .recharts-polar-grid path {
   stroke-width: 1px;
   opacity: 1;

@@ -4,6 +4,12 @@ import { useParams } from "react-router-dom";
 import Calory from "./Calory.png";
 import "./Calory.css";
 import backgroundCalory from "./backgroundCalory.png";
+
+/** 
+ * UserCalories component displays the user's calorie count.
+ * @returns {JSX.Element} the rendered component
+ */
+
 function UserCalories() {
   const { userId } = useParams();
   const [user, setUser] = useState(null);

@@ -44,6 +44,10 @@ function PerformanceChart() {
      */
     async function fetchData() {
       const userPerformanceData = await getUserPerformance(userId);
+       /**
+       * Transform and sort user performance data for display
+       * @type {Array}
+       */
       const updatedData = userPerformanceData.data.map((item) => ({
         ...item,
         name: kindNamesInFrench[userPerformanceData.kind[item.kind]],
@@ -55,9 +59,6 @@ function PerformanceChart() {
     fetchData();
   }, [userId]);
 
-
-
-
   return (
     <div className="Perf" style={{ background: "#000000" }}>
       <RadarChart cx={129} cy={131.5} outerRadius={80} width={258} height={263} data={data} fill="red"
@@ -68,7 +69,7 @@ function PerformanceChart() {
           dataKey="name"
           dy={4}
           tickLine={false}
-          tick={{ stroke: "#yellow", strokeWidth: 0.4 }} style={{ fontSize: 12, fontWeight: 500 }} />
+          tick={{ stroke: "white", strokeWidth: 0.4 }} style={{ fontSize: 12, fontWeight: 500 }} />
         <Radar
           name="Performance"
           dataKey="value"
