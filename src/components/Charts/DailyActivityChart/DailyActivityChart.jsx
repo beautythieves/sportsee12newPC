@@ -106,7 +106,6 @@ function DailyActivityChart() {
               >
         <CartesianGrid className="DailyGrid" vertical={false} strokeDasharray="2 2" stroke="grey" />
        
-       
         <Bar
         className="custom-bar"
           dataKey="kilograms"
@@ -163,6 +162,7 @@ function DailyActivityChart() {
         />
 
         <Tooltip
+          wrapperStyle={{outline: "none"}}
           content={<CustomTooltip />}
         />
         <Legend

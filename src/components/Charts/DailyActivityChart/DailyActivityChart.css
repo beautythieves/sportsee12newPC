@@ -21,6 +21,8 @@
   margin-top: 100px;
   margin-bottom: 20px;
   background: transparent;
+  font-family:'Roboto';
+  background: rgb(251, 251, 251)
 }
 
 .recharts-legend-item {
