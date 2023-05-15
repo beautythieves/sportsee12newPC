@@ -40,19 +40,18 @@ async function importMockedData() {
  * Fetches user main data from the server or mocked data.
  * @async
  * @param {Number} userId - The user ID.
- * @return {mainData} - The user's main data.
+ * @returns {mainData} - The user's main data.
  */
 async function getUserMainData(id) {
   // Get raw user data, either from the mocked data or from the backend server
   const rawUserData = useMockedData
-    ? await getMockedData("USER_MAIN_DATA", id)
-    : await importFromBackEnd("", id);
-  // Transform the object into an array and return it
-  // const userData = Object.values(rawUserData);
-  return rawUserData;
+    ? await getMockedData("USER_MAIN_DATA", id) // If using mocked data, get it from the mocked data source
+    : await importFromBackEnd("", id); // If not using mocked data, import it from the backend server
+
+  return rawUserData; // Return the raw user data
 }
 
-export { getUserMainData };
+export { getUserMainData }; // Export the function so it can be used in other parts of the project
 
 /**
  * Fetches user activity data from the server or mocked data.
@@ -63,10 +62,11 @@ async function getUserActivity(id) {
   const rawUserData = useMockedData
     ? await getMockedData("USER_ACTIVITY", id)
     : await importFromBackEnd("activity", id);
-
+  //this line converts the object into an array
   const userData = Object.values(rawUserData);
-
+  //this line gets the second element of the array (the sessions)
   const sessions = userData[1];
+  //initialize an object to store the sessions by day
   const sessionsByDay = {};
 
   // Sum the calories and kilograms for each day
@@ -78,14 +78,13 @@ async function getUserActivity(id) {
         kilograms: 0,
       };
     }
-
     sessionsByDay[day].calories += session.calories;
-
     if ("kilogram" in session) {
       sessionsByDay[day].kilograms += session.kilogram;
     }
   }
   // Convert the sessionsByDay object into an array of objects for the chart data
+  // each object has the day, calories and kilograms
   const chartData = Object.keys(sessionsByDay).map((day) => {
     return {
       day,
@@ -96,7 +95,6 @@ async function getUserActivity(id) {
 
   return chartData;
 }
-
 export { getUserActivity };
 
 /**
@@ -126,11 +124,19 @@ async function getUserPerformance(id) {
   // const userData = Object.values(rawUserData); // Transform the object into an array
   return rawUserData;
 }
+export { getUserPerformance };
 
+/**
+ * Retrieves mocked data based on the source and user ID.
+ * @async
+ * @param {string} src - The source of the mocked data.
+ * @param {Number} userId - The user ID.
+ * @returns {Object} - The mocked data.
+ */
 async function getMockedData(src, userId) {
   if (Object.keys(mockedData[src]).length === 0) await importMockedData();
   const data = mockedData[src].find((u) => u.userId === parseInt(userId));
   return data;
 }
 
-export { getUserPerformance };
+

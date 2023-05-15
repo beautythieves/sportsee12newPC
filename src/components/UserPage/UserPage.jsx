@@ -11,6 +11,7 @@ import Fat from "../Energy/Fat";
 import PerformanceChart from "../Charts/PerformanceChart/PerformanceChart";
 import DailyActivityChart from "../Charts/DailyActivityChart/DailyActivityChart";
 import SessionLengthChart from "../Charts/SessionLengthChart/SessionLengthChart";
+import PropTypes from "prop-types";
 
 /**
  * UserPage component displays a user's dashboard, including greeting, charts, and nutritional information.
@@ -19,11 +20,9 @@ import SessionLengthChart from "../Charts/SessionLengthChart/SessionLengthChart"
 function UserPage() {
   // Extract userId from the URL using useParams
   const { userId } = useParams();
-
   // Initialize state variables for user data and error status
   const [userData, setUserData] = useState(null);
   const [error, setError] = useState(false);
-
   // Fetch user data when the component mounts or when userId changes
   useEffect(() => {
     /**
@@ -34,7 +33,6 @@ function UserPage() {
       try {
         // Get user main data from the data manager
         const data = await getUserMainData(userId);
-
         // Update the userData state with the fetched data
         setUserData(data);
       } catch (err) {
@@ -43,21 +41,17 @@ function UserPage() {
         setError(true);
       }
     }
-
     // Call fetchData to fetch user data
     fetchData();
   }, [userId]);
-
   // If there's an error, display an error message
   if (error) {
     return <div>Error: Failed to load user data.</div>;
   }
-
   // If user data is not yet loaded, display a loading message
   if (!userData) {
     return <div>Loading...</div>;
   }
-
   // Render the user's dashboard components
   return (
     <div className="UserContainer">
@@ -67,7 +61,7 @@ function UserPage() {
         <div className="ChartsInRow">
           <SessionLengthChart userId={userId} />
           <PerformanceChart userId={userId} />
-        <UserPieChart userId={userId} />
+          <UserPieChart userId={userId} />
         </div>
       </div>
       <div className="Energy">
@@ -79,5 +73,9 @@ function UserPage() {
     </div>
   );
 }
-
+// PropTypes for UserPage component
+UserPage.propTypes = {
+  // The user ID passed as a prop
+  userId: PropTypes.string.isRequired,
+};
 export default UserPage;

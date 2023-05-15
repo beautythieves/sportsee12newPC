@@ -20,7 +20,4 @@
  * @property {Number} todayScore example : 0.12,
  * @property {mainKeyData} keyData
  */
-
-
-
 export {}
