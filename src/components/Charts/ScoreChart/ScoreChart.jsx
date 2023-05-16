@@ -11,11 +11,9 @@ import "./ScoreChart.css"
 function UserPieChart() {
   // Extract userId from the URL using useParams
   const { userId } = useParams();
-
   // Initialize state variables for user data and error
   const [user, setUser] = useState(null);
   const [error, setError] = useState(false);
-
   // Fetch user data when the component mounts or when userId changes
   useEffect(() => {
     /**
@@ -26,7 +24,6 @@ function UserPieChart() {
       try {
         // Get user data from the data manager
         const userData = await getUserMainData(userId);
-
         // Update the user state with the fetched data
         setUser(userData);
       } catch (err) {
@@ -36,26 +33,21 @@ function UserPieChart() {
     }
     fetchData();
   }, [userId]);
-
   // Display an error message if the data failed to load
   if (error) {
     return <div>Error: Failed to load user data for pie chart.</div>;
   }
-
   // Display a loading message if user data is not yet loaded
   if (!user) {
     return <div>Loading...</div>;
   }
-
   // Get today's score from the user data
   const todayScore = user.score !== undefined ? user.score : user.todayScore;
-
   // Define the data for the pie chart
   const data = [
     { name: "Score", value: todayScore },
     { name: "Reste", value: 1 - todayScore },
   ];
-
   // Define the colors for the pie chart slices
   const COLORS = ["#FF0000", "#FFFFFF"];
 
@@ -97,7 +89,7 @@ function UserPieChart() {
                 <g>
                   <text x={cx} y={cy - 10} textAnchor="middle" fontSize={26} fontFamily="Roboto" fontWeight="700" fill="#282D30">{percentage}</text>
                   <text x={cx} y={cy + 10} textAnchor="middle" fontSize={15} fontFamily="Roboto" fontWeight="600" fill="#74798C">de votre</text>
-                  <text x={cx} y={cy + 30} textAnchor="middle" fontSize={15} fontFamily = "Roboto" fontWeight="600" fill="#74798C">objectif</text>
+                  <text x={cx} y={cy + 30} textAnchor="middle" fontSize={15} fontFamily="Roboto" fontWeight="600" fill="#74798C">objectif</text>
                 </g>
               );
             }}
@@ -108,7 +100,6 @@ function UserPieChart() {
     </div>
   );
 }
-
 /*proptypes*/
 UserPieChart.propTypes = {
   userId: PropTypes.string.isRequired,

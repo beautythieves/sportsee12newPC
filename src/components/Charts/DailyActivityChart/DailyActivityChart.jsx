@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { getUserActivity } from "../../../dataManager/dataManager";
 import { useParams } from "react-router-dom";
-import {   BarChart, XAxis, YAxis, Tooltip, Bar, Legend, CartesianGrid } from "recharts";
+import { BarChart, XAxis, YAxis, Tooltip, Bar, Legend, CartesianGrid } from "recharts";
 import "./DailyActivityChart.css";
 
 /**
@@ -18,7 +18,7 @@ const CustomTooltip = ({ active, payload }) => {
     const calories = payload.find((item) => item.name === "Calories brûlées (kcal)");
 
     return (
-      <div className="daily-custom-tooltip" style ={{borderColor:"red!important"}}>
+      <div className="daily-custom-tooltip" style={{ borderColor: "red!important" }}>
         <span className="tooltip-value">{weight.value} kg</span>
         <span className="tooltip-value">{calories.value} kcal</span>
       </div>
@@ -59,7 +59,6 @@ function DailyActivityChart() {
   // Initialize state variables for user activity and error status
   const [userActivity, setUserActivity] = useState(null);
   const [error, setError] = useState(false);
-
 
   // Fetch user activity data when the component mounts or when userId changes
   useEffect(() => {
@@ -103,11 +102,10 @@ function DailyActivityChart() {
         width={835}
         height={320}
         data={userActivity}
-              >
+      >
         <CartesianGrid className="DailyGrid" vertical={false} strokeDasharray="2 2" stroke="grey" />
-       
         <Bar
-        className="custom-bar"
+          className="custom-bar"
           dataKey="kilograms"
           fill="#E6000"
           barSize={7}
@@ -115,7 +113,6 @@ function DailyActivityChart() {
           radius={[3, 3, 0, 0]}
           yAxisId="KilogramsLeft"
           active={{ fill: 'blue' }}
-
         />
         <Bar
           dataKey="calories"
@@ -124,8 +121,6 @@ function DailyActivityChart() {
           radius={[3, 3, 0, 0]}
           legendIcon={<CustomLegendIcon />}
           yAxisId="CaloriesRight"
-       
-      
         />
         <text className="Activite" x={90} y={40} textAnchor="middle" fontWeight={600} fontSize={15}>
           Activité quotidienne
@@ -162,7 +157,7 @@ function DailyActivityChart() {
         />
 
         <Tooltip
-          wrapperStyle={{outline: "none"}}
+          wrapperStyle={{ outline: "none" }}
           content={<CustomTooltip />}
         />
         <Legend

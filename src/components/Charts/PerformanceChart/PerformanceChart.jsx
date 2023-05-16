@@ -3,6 +3,8 @@ import { getUserPerformance } from "../../../dataManager/dataManager";
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, } from "recharts";
 import { useParams } from "react-router-dom";
 import "./PerformanceChart.css";
+import PropTypes from "prop-types";
+
 /**
  * French names for the different kinds of performance.
  * @type {{energy: string, cardio: string, intensity: string, speed: string, strength: string, endurance: string}}
@@ -83,5 +85,7 @@ function PerformanceChart() {
     </div>
   );
 }
-
+PerformanceChart.propTypes = {
+  userId: PropTypes.string.isRequired,
+};
 export default PerformanceChart;
