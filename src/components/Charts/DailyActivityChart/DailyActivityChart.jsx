@@ -112,7 +112,7 @@ function DailyActivityChart() {
           name="Poids (Kg)"
           radius={[3, 3, 0, 0]}
           yAxisId="KilogramsLeft"
-          active={{ fill: 'blue' }}
+          active={{ fill: "blue" }}
         />
         <Bar
           dataKey="calories"
