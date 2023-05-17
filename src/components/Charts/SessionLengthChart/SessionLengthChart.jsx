@@ -2,16 +2,8 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { getUserAverageSessions } from "../../../dataManager/dataManager";
 import { useParams } from "react-router-dom";
-import {
-  LineChart,
-  XAxis,
-  YAxis,
-  Tooltip,
-  Line,
-  CartesianGrid,
-} from "recharts";
+import {  LineChart,  XAxis,  YAxis,  Tooltip,  Line,  CartesianGrid,} from "recharts";
 import "./SessionLengthChart.css";
-
 /**
  * CustomTooltip for the LineChart. Displays the session length when hovered.
  * @param {object} props - The props passed to the component.
@@ -100,7 +92,7 @@ function SessionLengthChart() {
         width={268}
         height={263}
         data={userSessions}
-        cursor={{stroke:"red, strokeWidth: 2"}}
+        cursor={{ stroke: "red, strokeWidth: 2" }}
         margin={{ top: 20, right: 10, left: 10, bottom: 30 }}
       >
         <XAxis
@@ -118,16 +110,19 @@ function SessionLengthChart() {
           stroke="transparent"
           axisline={false}
         />
-<Tooltip content={<CustomTooltip />} isAnimationActive={false} wrapperStyle={{outline: "none"}} />
+        <Tooltip content={<CustomTooltip />} isAnimationActive={false} wrapperStyle={{ outline: "none" }} />
 
         <CartesianGrid stroke="#f5f5f5" vertical={false} />
         <CartesianGrid stroke="#f5f5f5" horizontal={false} />
-        <Line type="monotone" data={userSessions} stroke="#fff" yAxis={null} dot={false} strokeWidth={2}  dataKey="sessionLength" />
+        <Line type="monotone" data={userSessions} stroke="#fff" yAxis={null} dot={false} strokeWidth={2} dataKey="sessionLength" />
       </LineChart>
     </div>
   );
 }
-
+/*propTypes for the component*/
+SessionLengthChart.propTypes = {
+  userId: PropTypes.string.isRequired,
+};
 export default SessionLengthChart;
 
 
