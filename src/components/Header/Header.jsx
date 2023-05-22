@@ -1,8 +1,6 @@
 import React from "react";
 import logo from "./logo.png";
 import "./Header.css";
-
-
 /**
  * this component renders the header of the application
  * it displays the logo and the navigation bar

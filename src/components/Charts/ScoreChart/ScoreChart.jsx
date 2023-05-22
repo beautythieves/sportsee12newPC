@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
 import { getUserMainData } from "../../../dataManager/dataManager";
 import { PieChart, Pie, Cell, Label } from "recharts";
-import "./ScoreChart.css"
+import "./ScoreChart.css";
 /**
  * UserPieChart component displays a pie chart of a user's score.
  * @returns {JSX.Element}
