@@ -41,13 +41,13 @@ function Proteins() {
 
   return (
     <div className="Calory_Container Prot">
-      <div className="Calory_Button" style= {{backgroundImage:`url(${backgroundProt})` }}>
+      <div className="Calory_Button" style={{ backgroundImage: `url(${backgroundProt})` }}>
         <img src={Protein} alt="Protein icon" />
       </div>
       <div className="Calory_Number">
         <span className="kcal">{proteinCount} g</span>
         <br />
-<span className="calories">Protéines</span>
+        <span className="calories">Protéines</span>
       </div>
     </div>
   );

@@ -41,11 +41,11 @@ function Fat () {
 
   return (
     <div className="Calory_Container Fat">
-<div className="Calory_Button" style={{backgroundImage: `url(${backgroundFat})`}}>     
+      <div className="Calory_Button" style={{backgroundImage: `url(${backgroundFat})`}}>     
         <img src={cheeseburger} alt="Carbohydrate icon" />
       </div>
       <div className="Calory_Number">
-       <span className="kcal">{lipidCount} g</span> 
+        <span className="kcal">{lipidCount} g</span> 
         <br />
         <span className="calories">Lipides</span>
       </div>

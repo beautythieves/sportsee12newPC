@@ -10,7 +10,7 @@ import backgroundCarb from "./backgroundCarb.png";
  * the Carbohydrate component displays the user's carbohydrate count.
  * @returns {JSX.Element} the rendered component
  */
-function Carbohydrate () {
+function Carbohydrate() {
   const { userId } = useParams();
   const [user, setUser] = useState(null);
   const [error, setError] = useState(false);
@@ -41,11 +41,11 @@ function Carbohydrate () {
 
   return (
     <div className="Calory_Container Carb">
-<div className="Calory_Button" style={{backgroundImage: `url(${backgroundCarb})`}}>    
+      <div className="Calory_Button" style={{ backgroundImage: `url(${backgroundCarb})` }}>
         <img src={Carbo} alt="Carbohydrate icon" />
       </div>
       <div className="Calory_Number">
-        <span className = "kcal">{carbohydrateCount} g</span>
+        <span className="kcal">{carbohydrateCount} g</span>
         <br />
         <span className="calories">Glucides</span>
       </div>
