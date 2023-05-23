@@ -31,14 +31,14 @@ function UserCalories() {
     return <div>Loading...</div>;
   }
   const { calorieCount } = user.keyData;
-  const kcalCount = calorieCount / 1000;
+  const kcalCount = (calorieCount / 1000).toLocaleString();
   return (
     <div className="Calory_Container" style={{ paddingLeft: "27px" }}>
       <div className="Calory_Button" style={{ backgroundImage: `url(${backgroundCalory})` }}>
         <img src={Calory} alt="Calorie icon" />
       </div>
       <div className="Calory_Number">
-        <span className="kcal">{kcalCount} Kcal</span>
+        <span className="kcal">{kcalCount}kCal</span>
         <br />
         <span className="calories">Calories</span>
       </div>

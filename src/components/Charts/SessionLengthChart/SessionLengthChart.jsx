@@ -114,7 +114,14 @@ function SessionLengthChart() {
 
         <CartesianGrid stroke="#f5f5f5" vertical={false} />
         <CartesianGrid stroke="#f5f5f5" horizontal={false} />
-        <Line type="monotone" data={userSessions} stroke="#fff" yAxis={null} dot={false} strokeWidth={2} dataKey="sessionLength" />
+        <Line
+          type="monotone"
+          dataKey="sessionLength"
+          stroke="rgba(255, 255, 255, 0.7)"
+          strokeWidth={2}
+          dot={false}
+          activeDot={{ r: 4, strokeWidth: 4, stroke: "white" }}
+        />
       </LineChart>
     </div>
   );

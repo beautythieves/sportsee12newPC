@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /**
  * Object destructuring of user data arrays from data.js
  * @typedef {Object} UserDataArrays

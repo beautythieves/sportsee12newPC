@@ -46,10 +46,10 @@ function PerformanceChart() {
      */
     async function fetchData() {
       const userPerformanceData = await getUserPerformance(userId);
-       /**
-       * Transform and sort user performance data for display
-       * @type {Array}
-       */
+      /**
+      * Transform and sort user performance data for display
+      * @type {Array}
+      */
       const updatedData = userPerformanceData.data.map((item) => ({
         ...item,
         name: kindNamesInFrench[userPerformanceData.kind[item.kind]],
@@ -64,10 +64,10 @@ function PerformanceChart() {
   return (
     <div className="Perf" style={{ background: "#000000" }}>
       <RadarChart cx={129} cy={131.5} outerRadius={80} width={258} height={263} data={data} fill="red"
-        stroke="white" legend={{ fontSize: 12, fontWeight: 'bold' }}>
+        stroke="white" legend={{ fontSize: 12, fontWeight: "bold" }}>
         <PolarGrid className="polar-grid" radialLines={false} />
         <PolarAngleAxis
-        stroke="white"
+          stroke="white"
           dataKey="name"
           dy={4}
           tickLine={false}
@@ -79,7 +79,7 @@ function PerformanceChart() {
           fill="#8884d8"
           fillOpacity={0.7}
           style={{ fontSize: 12, fontWeight: "bold", fill: "red" }}
-       
+
         />
       </RadarChart>
     </div>

@@ -1,38 +1,44 @@
-.Calory_Container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 258px;
-    height: 124px;
-    padding: 0 20px;
-    background: #FBFBFB;
+.Calory_Container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 258px;
+  height: 124px;
+  padding: 0 20px;
+  background: #FBFBFB;
 }
-.Cal{
+
+.Cal {
   padding-right: 24px;
 }
-.Calory_Button {
-    width: 60px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-.Calory_Button img {
-    width: 15.8px;
-    height: 20px;
-  }
-  .Calory_Number{
-    
-    margin-left: 24px;
 
-  }
-   .kcal {
-    font-size: 20px;
-    font-weight: 700;
-  }
-  
-  .calories {
-    font-size: 14px;
-font-weight: 500;   }
-  
+.Calory_Button {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Calory_Button img {
+  width: 15.8px;
+  height: 20px;
+}
+
+.Calory_Number {
+
+  margin-left: 24px;
+
+}
+
+.kcal {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.calories {
+  font-size: 14px;
+  font-weight: 500;
+  color:  #74798C;
+
+}
