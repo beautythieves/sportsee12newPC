@@ -33,7 +33,9 @@ function UserCalories() {
   const { calorieCount } = user.keyData;
   const kcalCount = (calorieCount / 1000).toLocaleString("en-US", {
     useGrouping: true,
-  });  return (
+  }).replace(".", ",");
+  
+  return (
     <div className="Calory_Container" style={{ paddingLeft: "27px" }}>
       <div className="Calory_Button" style={{ backgroundImage: `url(${backgroundCalory})` }}>
         <img src={Calory} alt="Calorie icon" />

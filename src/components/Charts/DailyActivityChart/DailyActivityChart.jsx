@@ -170,12 +170,12 @@ function DailyActivityChart() {
             {
               value: "Poids (Kg)",
               type: "circle",
-              color: "#000000",
+              color: "#74798C",
             },
             {
               value: "Calories brûlées (kcal)",
               type: "circle",
-              color: "#E60000",
+              color: "#74798C",
             },
           ]}
         />
