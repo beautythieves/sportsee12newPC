@@ -40,7 +40,7 @@ function Proteins() {
         <img src={Protein} alt="Protein icon" />
       </div>
       <div className="Calory_Number">
-        <span className="kcal">{proteinCount} g</span>
+        <span className="kcal">{proteinCount}g</span>
         <br />
         <span className="calories">Protéines</span>
       </div>
