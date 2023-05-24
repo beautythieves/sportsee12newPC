@@ -1,5 +1,5 @@
-/* eslint-disable linebreak-style */
-// eslint-disable-next-line linebreak-style
+/* eslint linebreak-style: 0 */
+
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/Header/Header";

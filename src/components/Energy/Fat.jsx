@@ -38,7 +38,7 @@ function Fat () {
         <img src={cheeseburger} alt="Carbohydrate icon" />
       </div>
       <div className="Calory_Number">
-        <span className="kcal">{lipidCount} g</span> 
+        <span className="kcal">{lipidCount}g</span> 
         <br />
         <span className="calories">Lipides</span>
       </div>
