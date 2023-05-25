@@ -14,7 +14,7 @@ function App() {
       <AsideNav />
       <Router>
         <Routes>
-          <Route path="*" element={<Navigate to="/user/0" />} />
+        <Route path="/" element={<Navigate to="/user/12" replace />} />
           <Route  path="/user/:userId" element={<UserPage />} />
         </Routes>
       </Router>
