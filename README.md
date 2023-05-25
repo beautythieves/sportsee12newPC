@@ -3,9 +3,9 @@ Sportsee Projet 12 Openclassrooms, parcours "développeur d'applications Javascr
 Sportsee project is a demonstartion of an interactive analytics dashboard with React using an Api.
 
 ## Used technologies, libraries and dependencies
- React
- React Router
- Recharts
+ React,
+ React Router,
+ Recharts,
  
  
 
